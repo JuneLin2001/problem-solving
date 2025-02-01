@@ -1,0 +1,58 @@
+## 3151. Special Array I
+
+### Easy
+
+### Description
+An array is considered **special** if every pair of its adjacent elements contains two numbers with different parity.
+
+You are given an array of integers `nums`. Return `true` if `nums` is a special array, otherwise, return `false`.
+
+---
+
+### Examples
+
+#### Example 1:
+**Input:**
+```plaintext
+nums = [1]
+```
+**Output:**
+```plaintext
+true
+```
+**Explanation:**
+There is only one element. So the answer is `true`.
+
+---
+
+#### Example 2:
+**Input:**
+```plaintext
+nums = [2,1,4]
+```
+**Output:**
+```plaintext
+true
+```
+**Explanation:**
+There are two pairs: `(2,1)` and `(1,4)`, and both contain numbers with different parity. So the answer is `true`.
+
+---
+
+#### Example 3:
+**Input:**
+```plaintext
+nums = [4,3,1,6]
+```
+**Output:**
+```plaintext
+false
+```
+**Explanation:**
+`nums[1]` and `nums[2]` are both odd. So the answer is `false`.
+
+---
+
+### Constraints:
+- `1 <= nums.length <= 100`
+- `1 <= nums[i] <= 100
