@@ -7,7 +7,7 @@ var longestMonotonicSubarray = function (nums) {
   let decrease = 1;
   let maxLen = 1;
 
-  for (let i = 1; i < nums.length; i++) {
+  for (i = 1; i < nums.length; i++) {
     if (nums[i] > nums[i - 1]) {
       increase++;
       decrease = 1;
@@ -23,5 +23,3 @@ var longestMonotonicSubarray = function (nums) {
 
   return maxLen;
 };
-
-console.log(longestMonotonicSubarray([1, 10, 10]));
