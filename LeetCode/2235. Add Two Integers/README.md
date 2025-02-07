@@ -16,3 +16,9 @@ Explanation: num1 + num2 = -6, so -6 is returned.
 ## Constraints:
 
 -100 <= num1, num2 <= 100
+
+## 解題思路
+### 就...加起來！
+
+## 心得
+### 好愛這題，增加一點自信好耶 > <
