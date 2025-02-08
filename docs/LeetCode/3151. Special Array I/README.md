@@ -28,8 +28,10 @@ nums[1] and nums[2] are both odd. So the answer is false.
 
 
 ## Constraints:
+```
 - 1 <= nums.length <= 100
 - 1 <= nums[i] <= 100
+```
 
 ## 解題思路
 ### 想法是就直接暴力的遍歷 nums 陣列，相鄰的兩個數是否為一偶一奇，是的話直接return false，如果都不是的話那就return true！

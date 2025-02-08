@@ -1,3 +1,8 @@
+---
+title: 349. Intersection of Two Arrays
+description: Test
+---
+
 # [349. Intersection of Two Arrays](https://leetcode.com/problems/intersection-of-two-arrays/)
 ### Easy
 Given two integer arrays nums1 and nums2, return an array of their 
@@ -14,8 +19,10 @@ Output: [9,4]
 Explanation: [4,9] is also accepted.
 
 ## Constraints:
+```
 1 <= nums1.length, nums2.length <= 1000
 0 <= nums1[i], nums2[i] <= 1000
+```
 
 ## 解題思路
 ### 原本想用 Counter 之類的做法，但看到`Set 的特色是有 has() 這個方法，可以快速判斷該 Set 中是否包含某個元素` 就直接大幅簡化了

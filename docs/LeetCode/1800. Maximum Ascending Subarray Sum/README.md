@@ -1,4 +1,4 @@
-# [1800. Maximum Ascending Subarray Sum](https://leetcode.com/problems/maximum-ascending-subarray-sum/description/)
+<!-- # [1800. Maximum Ascending Subarray Sum](https://leetcode.com/problems/maximum-ascending-subarray-sum/description/)
 ### Easy
 
 Given an array of positive integers nums, return the maximum possible sum of an ascending subarray in nums.
@@ -26,11 +26,13 @@ Explanation: [10,11,12] is the ascending subarray with the maximum sum of 33.
  
 
 ## Constraints:
+```
 1 <= nums.length <= 100
 1 <= nums[i] <= 100
+```
 
 ## 解題思路
 ### 直接遍歷陣列暴力比較 i 有沒有比 i - 1 大，有的話就加上 i，如果碰壁的話就看之前累加的跟現在累加的哪個比較大並紀錄大的那個，並把碰壁的nums[i]當成新的起點繼續遍歷陣列
 
 ## 心得
-### 一開始差了「把碰壁的nums[i]當成新的起點」所以邏輯有誤，解題完之後看整體發現其實比想像中的簡單。
+### 一開始差了「把碰壁的nums[i]當成新的起點」所以邏輯有誤，解題完之後看整體發現其實比想像中的簡單。 -->

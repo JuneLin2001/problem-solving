@@ -29,8 +29,10 @@ You can rotate the array by x = 0 positions (i.e. no rotation) to make nums.
 
 ## Constraints:
 
+```
 1 <= nums.length <= 100
 1 <= nums[i] <= 100
+```
 
 ## 解題思路
 ### 想法就是暴力解的遍歷陣列比較陣列是否為非遞減（[3,3,3,3]這種全部都同一個數的也算非遞減所以會是true），但由於陣列可能是旋轉過的所以有1次的寬限，如果不只1次的話就要算false了

@@ -18,10 +18,12 @@ Explanation: 2 does not exist in nums so return -1
 
 
 ## Constraints:
+```
 1 <= nums.length <= 104  
 -104 < nums[i], target < 104  
 All the integers in nums are unique.  
 nums is sorted in ascending order.  
+```
 
 ## 解題思路
 ### 來練習一下經典題，試了兩種解法分別放在 js 和 ts ，js 是用從頭開始暴力遍歷陣列的 Linear Search，ts則是效能較好的 Binary Search，而題目描述有提到 `You must write an algorithm with O(log n) runtime complexity.` 所以正解會是 Binary Search 的作法。
