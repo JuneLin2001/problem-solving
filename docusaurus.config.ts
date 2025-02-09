@@ -6,21 +6,13 @@ const config: Config = {
   title: "LeetCode and Codewars solutions",
   tagline: "記錄自己 Leetcode 和 Codewars 刷題的紀錄",
   favicon: "img/favicon.ico",
-
   url: "https://your-docusaurus-site.example.com",
   baseUrl: "/",
-
   organizationName: "JuneLin2001",
   projectName: "solve-problems",
-
+  deploymentBranch: "gh-pages",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
-
-  i18n: {
-    defaultLocale: "zh-TW",
-    locales: ["zh-TW"],
-  },
-
   presets: [
     [
       "classic",
@@ -29,17 +21,6 @@ const config: Config = {
           routeBasePath: "/",
           sidebarPath: require.resolve("./sidebars.js"),
           editUrl: "https://github.com/JuneLin2001/solve-problems/edit/main/",
-        },
-        blog: {
-          showReadingTime: true,
-          feedOptions: {
-            type: ["rss", "atom"],
-            xslt: true,
-          },
-          editUrl: "https://github.com/JuneLin2001/solve-problems/edit/main/",
-          onInlineTags: "warn",
-          onInlineAuthors: "warn",
-          onUntruncatedBlogPosts: "warn",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
