@@ -5,7 +5,7 @@
 ## Built With
 
 ![MDX](https://img.shields.io/badge/mdx-%23fcb32c.svg?style=for-the-badge&logo=mdx&logoColor=white)
-![Docusaurus](https://img.shields.io/badge/docusaurus-%.svg?style=for-the-badge&logo=docusaurus&logoColor=%3ECC5F&color=white)
+![Docusaurus](https://img.shields.io/badge/docusaurus-%23ffffff.svg?style=for-the-badge&logo=docusaurus&logoColor=%3ECC5F&color=white)
 ![Github Pages](https://img.shields.io/badge/github%20pages-121013?style=for-the-badge&logo=github&logoColor=white)
 
 ## [LeetCode Stats Card](https://github.com/JacobLinCool/LeetCode-Stats-Card)
