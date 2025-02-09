@@ -1,50 +1,15 @@
-# 放自己刷題的紀錄，以 Leetcode 和 Codewars 為主
+# 哩扣哇筆記
+放自己 Leetcode 和 Codewars 刷題的紀錄，包含解題思路與心得，並使用 Docusaurus 實現簡單部署。
+> [網站連結](https://junelin2001.github.io/solve-problems/intro)
+
+## Built With
+
+![MDX](https://img.shields.io/badge/mdx-%23fcb32c.svg?style=for-the-badge&logo=mdx&logoColor=white)
+![Docusaurus](https://img.shields.io/badge/docusaurus-%.svg?style=for-the-badge&logo=docusaurus&logoColor=%3ECC5F&color=white)
+![Github Pages](https://img.shields.io/badge/github%20pages-121013?style=for-the-badge&logo=github&logoColor=white)
 
 ## [LeetCode Stats Card](https://github.com/JacobLinCool/LeetCode-Stats-Card)
 [![LeetCode Stats](https://leetcard.jacoblin.cool/JuneLin2001?theme=dark&font=Trispace&ext=activity)](https://leetcode.com/u/JuneLin2001/)
 
 ## [Codewars readme stats](https://github.com/DiniFarb/codewars_readme_stats)  
 [![Codewars](https://github.r2v.ch/codewars?user=JuneLin2001&theme=gradient&top_languages=true)](https://www.codewars.com/users/JuneLin2001)
-
-
-# Website
-
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
-
-### Installation
-
-```
-$ yarn
-```
-
-### Local Development
-
-```
-$ yarn start
-```
-
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
-
-### Build
-
-```
-$ yarn build
-```
-
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
-
-### Deployment
-
-Using SSH:
-
-```
-$ USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
