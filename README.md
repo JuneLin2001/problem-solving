@@ -5,7 +5,7 @@
 ## Built With
 
 ![MDX](https://img.shields.io/badge/mdx-%23fcb32c.svg?style=for-the-badge&logo=mdx&logoColor=white)
-![Docusaurus](https://img.shields.io/badge/docusaurus-%23ffffff.svg?style=for-the-badge&logo=docusaurus&logoColor=%3ECC5F&color=white)
+![Docusaurus](https://img.shields.io/badge/docusaurus-%23ffff50.svg?style=for-the-badge&logo=docusaurus&logoColor=3ECC5F)
 ![Github Pages](https://img.shields.io/badge/github%20pages-121013?style=for-the-badge&logo=github&logoColor=white)
 
 ## [LeetCode Stats Card](https://github.com/JacobLinCool/LeetCode-Stats-Card)
@@ -13,3 +13,8 @@
 
 ## [Codewars readme stats](https://github.com/DiniFarb/codewars_readme_stats)  
 [![Codewars](https://github.r2v.ch/codewars?user=JuneLin2001&theme=gradient&top_languages=true)](https://www.codewars.com/users/JuneLin2001)
+
+
+## Roadmap
+- [ ] 加搜尋功能
+- [ ] CSS 樣式弄好看一點
