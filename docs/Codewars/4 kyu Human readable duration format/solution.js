@@ -21,5 +21,3 @@ function formatDuration(seconds) {
     ? resultArr.slice(0, -1).join(", ") + " and " + resultArr.slice(-1)
     : resultArr[0];
 }
-
-console.log(formatDuration(100));
