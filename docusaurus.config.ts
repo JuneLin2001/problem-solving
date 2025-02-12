@@ -7,7 +7,7 @@ const config: Config = {
   tagline: "記錄自己 Leetcode 和 Codewars 刷題的紀錄",
   favicon: "img/favicon.ico",
   url: "https://junelin2001.github.io/",
-  baseUrl: "/solve-problems/",
+  baseUrl: "/solve-problems",
   projectName: "solve-problems",
   organizationName: "JuneLin2001",
   deploymentBranch: "gh-pages",
