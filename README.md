@@ -1,4 +1,4 @@
-# 哩扣哇筆記
+# LeetCode and Codewars
 放自己 Leetcode 和 Codewars 刷題的紀錄，包含解題思路與心得，並使用 Docusaurus 實現簡單部署。
 > [網站連結](https://junelin2001.github.io/solve-problems)
 
