@@ -8,7 +8,7 @@ const config: Config = {
   title: "LeetCode and Codewars solutions",
   tagline: "記錄自己 Leetcode 和 Codewars 刷題的紀錄",
   favicon: "img/favicon.ico",
-  url: "https://junelin2001.github.io/",
+  url: "https://junelin2001.github.io",
   baseUrl: "/solve-problems",
   projectName: "solve-problems",
   organizationName: "JuneLin2001",
@@ -22,7 +22,6 @@ const config: Config = {
         docs: {
           routeBasePath: "/",
           sidebarPath: require.resolve("./sidebars.js"),
-          editUrl: "https://github.com/JuneLin2001/solve-problems/edit/main/",
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],
         },
