@@ -1,0 +1,118 @@
+---
+title: 2221. Find Triangular Sum of an Array
+description: You are given a 0-indexed integer array nums, where nums[i] is a digit between 0 and 9 (inclusive).
+keywords: [LeetCode, 2221. Find Triangular Sum of an Array, Medium, Array, Math, Simulation, Combinatorics]
+---
+
+# [{frontMatter.title}](https://leetcode.com/problems/find-triangular-sum-of-an-array/)
+
+:::danger Medium
+:::
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs>
+  <TabItem value="description" label="題目描述" default>
+    ## Description
+You are given a **0-indexed** integer array nums, where nums[i] is a digit between 0 and 9 (**inclusive**).  
+The **triangular sum** of nums is the value of the only element present in nums after the following process terminates:  
+ 1. Let nums comprise of n elements. If `n == 1`, **end** the process. Otherwise, **create** a new **0-indexed** integer array `newNums` of length `n - 1`.  
+ 2. For each index i, where `0 <= i < n - 1`, **assign** the value of `newNums[i]` as `(nums[i] + nums[i+1]) % 10`, where % denotes modulo operator.  
+ 3. **Replace** the array `nums` with `newNums`.
+ 4. **Repeat** the entire process starting from step 1.
+Return the triangular sum of `nums`.
+
+#### Example 1:
+![](https://assets.leetcode.com/uploads/2022/02/22/ex1drawio.png)
+> **Input:** nums = [1,2,3,4,5]  
+**Output:** 8  
+**Explanation:**  
+The above diagram depicts the process from which we obtain the triangular sum of the array.
+
+#### Example 2:
+> **Input:** nums = [5]  
+**Output:** 5  
+**Explanation:**  
+Since there is only one element in nums, the triangular sum is the value of that element itself.
+
+## Constraints:
+
+ - `1 <= nums.length <= 1000`
+ - `0 <= nums[i] <= 9`
+
+  </TabItem>
+  <TabItem value="solution" label="解答">
+   ## Solution
+```js title="JavaScript"
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var triangularSum = function (nums) {
+  while (nums.length > 1) {
+    const newNums = [];
+    for (let i = 0; i < nums.length - 1; i++) {
+      newNums.push((nums[i] + nums[i + 1]) % 10);
+    }
+    nums = newNums;
+  }
+
+  return nums[0];
+};
+```
+  </TabItem>
+</Tabs>
+
+
+## 解題思路
+根據題目描述的 1. 2. 3. 4. 步驟那邊，第一步是
+> 1. Let nums comprise of n elements. If `n == 1`, **end** the process. Otherwise, **create** a new **0-indexed** integer array `newNums` of length `n - 1`.
+
+所以使用下面的程式碼來起頭，當 nums 這個 array 的長度仍大於一的時候就持續執行迴圈，且每次迴圈重新執行的時候建立一個新的 newNums 陣列。  
+```js
+  while (nums.length > 1) {
+      const newNums = [];
+  }
+``` 
+
+> 2. For each index i, where `0 <= i < n - 1`, **assign** the value of `newNums[i]` as `(nums[i] + nums[i+1]) % 10`, where % denotes modulo operator.  
+
+第二步是要算出下一排的值，規則是把 `nums[i]` 和 `nums[i + 1]` 加起來，如果大於 10 的話該格會變成加起來的值除 10 的餘數  
+ex: 如果是 `7 + 5 = 12` 的話那格就會變成 12 除 10 的餘數 `2`
+
+直接把這段轉成程式碼就會變成
+```js
+  for (let i = 0; i < nums.length - 1; i++) {
+    newNums.push((nums[i] + nums[i + 1]) % 10);
+  }
+```
+
+第三步就是直接使用 newNums 來取代運算前的 nums，更新新一排的陣列，新一排的長度會是前一排減一，就這樣子重複運算直到只剩下一個值。  
+如附圖的 `[1,2,3,4,5]`，在經過一輪的計算後會變成 `[3,5,7,9]`，再一輪則會是 `[8,2,6]`
+> 3. **Replace** the array `nums` with `newNums`.
+```js
+  nums = newNums;
+```
+
+最後重複執行整個過程，剩下一個值的時候就是要回傳的結果
+>  4. **Repeat** the entire process starting from step 1.
+```js
+var triangularSum = function (nums) {
+  while (nums.length > 1) {
+    const newNums = [];
+    for (let i = 0; i < nums.length - 1; i++) {
+      newNums.push((nums[i] + nums[i + 1]) % 10);
+    }
+    nums = newNums; //會慢慢減少 nums.length，直到 nums.length = 1 時候跳出迴圈
+  }
+
+  return nums[0];
+};
+```
+## 心得
+
+第一眼覺得很複雜，但搭配圖解之後有變得好理解不少!  
+而且題目描述就把整體的 sudo code 完成得差不多了，只要再轉換成程式碼就差不多解出來了。
+
+
