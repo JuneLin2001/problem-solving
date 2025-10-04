@@ -7,7 +7,9 @@ title: 格式介紹
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
+import CodeBlock from '@theme/CodeBlock';
 import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Solution from '!!raw-loader!./solution.js';
 
 <DifficultyBadge difficulty="難度" />
 
@@ -17,9 +19,7 @@ import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
   </TabItem>
   <TabItem value="solution" label="解答">
    ## Solution
-```js
-
-```
+    <CodeBlock language="js">{Solution}</CodeBlock>
   </TabItem>
 </Tabs>
 
