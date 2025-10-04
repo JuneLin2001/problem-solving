@@ -1,0 +1,94 @@
+---
+title: 11. Container With Most Water
+description: You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).Find two lines that together with the x-axis form a container, such that the container contains the most water.Return the maximum amount of water a container can store.Notice that you may not slant the container.
+keywords:
+  [
+    LeetCode,
+    11. Container With Most Water,
+    Medium,
+    Array,
+    Two Pointers,
+    Greedy,
+  ]
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from '@theme/CodeBlock';
+import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Solution from '!!raw-loader!./solution.js';
+
+# [{frontMatter.title}](https://leetcode.com/problems/container-with-most-water)
+
+<DifficultyBadge difficulty="Medium" />
+
+<Tabs>
+  <TabItem value="description" label="題目描述" default>
+  ## Description
+    You are given an integer array height of length `n`. There are n vertical lines drawn such that the two endpoints of the `ith` line are `1(i, 0)` and `(i, height[i])`.  
+
+    Find two lines that together with the x-axis form a container, such that the container contains the most water.  
+
+    Return the maximum amount of water a container can store.  
+
+    **Notice** that you may not slant the container.  
+
+
+  #### Example 1:
+    ![](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/07/17/question_11.jpg)
+  > **Input:** height = [1,8,6,2,5,4,8,3,7]  
+  **Output:** 49    
+  **Explanation:** The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49.
+
+  #### Example 2:
+  > **Input:** height = [1,1]  
+  **Output:** 1  
+
+  </TabItem>
+  <TabItem value="solution" label="解答">
+   ## Solution
+    <CodeBlock language="js">{Solution}</CodeBlock>
+  </TabItem>
+</Tabs>
+
+
+## 解題思路
+    
+    1. 先定義好 `left pointer` 和 `right pointer` 分別指向 height 的頭與尾，以及 mostWater 紀錄目前的最大水量值。
+    ```js
+      let left = 0;
+      let right = height.length - 1;
+      let mostWater = 0;
+    ```
+    2. 重複執行程式直到 right 和 left 重合。
+   ```js
+    while (right > left) {
+
+    }
+   ```
+    3. 使用 waterCurrently 算出目前水量，因為最大水兩高度是由兩邊中較短的決定的（假設一邊是 8 一邊是 5，水最高只能到 5，再多就會從水槽流出，而 right - left 是寬度，`長 * 寬`就是目前水量了。  
+        若 waterCurrently > mostWater 則更新。
+
+   ```js
+    const waterCurrently = Math.min(height[left], height[right]) * (right - left); 
+
+    mostWater = Math.max(mostWater, waterCurrently);
+   ```
+
+    4. 如果左邊較短的話就把 `left pointer` 向右移動，反之則把 `right point` 向左移。
+   ```js
+    if (height[left] < height[right]) {
+      left++;
+    } else {
+      right--;
+    }
+   ```
+    5. 最後回傳 mostWater 就是答案了。
+   ```js
+     return mostWater;
+   ```
+
+
+
+## 心得
+    練習 Two Pointers，題目光看描述覺得很抽象，但有圖片輔助說明有好懂了不少！
