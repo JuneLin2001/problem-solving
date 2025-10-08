@@ -1,0 +1,63 @@
+---
+title: Most frequently used words in a text
+description: Write a function that, given a string of text (possibly with punctuation and line-breaks), returns an array of the top-3 most occurring words, in descending order of the number of occurrences.
+keywords:
+  [
+    Codewars,
+    Most frequently used words in a text,
+    4 kyu,
+    Strings,
+    Filtering,
+    Algorithms,
+    Regular Expressions,
+  ]
+tags: [Codewars, 4 kyu, Strings, Filtering, Algorithms, Regular Expressions]
+---
+
+# [{frontMatter.title}](https://www.codewars.com/kata/51e056fe544cf36c410000fb/train/javascript)
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Solution from "!!raw-loader!./solution.js";
+import Description from "./_Description.md";
+import Examples from "./_Examples.md";
+
+<DifficultyBadge kyu={4} />
+
+<Tabs>
+  <TabItem value="description" label="題目描述" default>
+    <details open>
+      <summary>Description</summary>
+        <Description />
+        <Examples />
+    </details> 
+  </TabItem>
+
+  <TabItem value="solution" label="解答">
+   ## Solution
+    <CodeBlock language="js">{Solution}</CodeBlock>
+  </TabItem>
+</Tabs>
+
+### 解題思路
+
+使用 Counter 來計算單詞出現次數，再用正則表達式篩選出符合題意的格式。  
+重點為：
+
+1.  轉小寫
+2.  忽略標點符號（但 won't 的標點不能被忽略掉）
+
+最後轉換物件為陣列並依次數由大到小排序，並根據單詞總數決定要返回多少個單詞
+
+```js
+Object.entries(counter) // 將 Counter 轉成陣列
+  .sort(([, a], [, b]) => b - a)
+  .slice(0, Math.min(3, Object.keys(counter).length)) // 根據單詞總數動態調整要返回多少個單詞
+  .map(([key]) => key);
+```
+
+### 心得
+
+稍微進階的題目，練習 Counter 與正則表達式與物件和陣列的操作!

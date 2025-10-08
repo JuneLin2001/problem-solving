@@ -1,0 +1,45 @@
+---
+title: Human readable duration format
+description: Your task in order to complete this Kata is to write a function which formats a duration, given as a number of seconds, in a human-friendly way.
+keywords:
+  [
+    Codewars,
+    Human readable duration format,
+    4 kyu,
+    Strings,
+    Date Time,
+    Algorithms,
+  ]
+tags: [Codewars, 4 kyu, Strings, Date Time, Algorithms]
+---
+
+# [{frontMatter.title}](https://www.codewars.com/kata/52742f58faf5485cae000b9a/train/javascript)
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Solution from "!!raw-loader!./solution.js";
+import Description from "./_Description.md";
+
+<DifficultyBadge kyu={4} />
+
+<Tabs>
+  <TabItem value="description" label="題目描述" default>
+    <details open>
+      <summary>Description</summary>
+        <Description />
+    </details> 
+  </TabItem>
+
+  <TabItem value="solution" label="解答">
+   ## Solution
+    <CodeBlock language="js">{Solution}</CodeBlock>
+  </TabItem>
+</Tabs>
+### 解題思路
+就很暴力的遍歷陣列然後換算時間單位秒、分、時、天、年，並儲存到 resultArr 之中，最後把 resultArr 重組成題目要求的字串格式並回傳結果。
+
+### 心得
+
+很單純的題目，但目前只想到暴力解還沒想到可能的優化解。
