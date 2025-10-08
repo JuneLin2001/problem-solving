@@ -1,0 +1,67 @@
+---
+title: Stop gninnipS My sdroW!
+description: Write a function that takes in a string of one or more words, and returns the same string, but with all words that have five or more letters reversed (Just like the name of this Kata). Strings passed in will consist of only letters and spaces. Spaces will be included only when more than one word is present.
+keywords: [Codewars, Stop gninnipS My sdroW, 6 kyu, Strings, Algorithms]
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Solution from "!!raw-loader!./solution.js";
+import Description from "./_Description.md";
+import Examples from "./_Examples.md";
+
+<DifficultyBadge kyu={6} />
+
+<Tabs>
+  <TabItem value="description" label="題目描述" default>
+    <details open>
+      <summary>Description</summary>
+        <Description />
+        <Examples />
+    </details> 
+  </TabItem>
+
+  <TabItem value="solution" label="解答">
+   ## Solution
+    <CodeBlock language="js">{Solution}</CodeBlock>
+  </TabItem>
+</Tabs>
+
+## 解題思路
+
+如果字串長度大於等於 5,使用 `split('').reverse().join('')` 將字串反轉，反之維持不變。
+
+```js
+split('').reverse().join('') 的步驟拆解如下:
+
+const word = "範例字串"
+const wordSplit = word.split(""); //令輸入的字串轉為陣列
+const reverseArray = wordSplit.reverse(); //反轉輸入的陣列
+const joinArray = reverseArray.join(""); //連接反轉的陣列
+console.log(joinArray); // "串字例範"
+```
+
+也可以使用展開運算子
+
+```js
+const word = "字串";
+const reversed = [...word].reverse().join("");
+console.log(reversed); // "串字例範"
+```
+
+或是使用迴圈反轉
+
+```js
+const word = "字串";
+let reversed = "";
+for (let char of word) {
+  reversed = char + reversed; // 每次把字加到前面
+}
+console.log(reversed); // "串字例範"
+```
+
+## 心得
+
+練習如何在 JavaScript 中將字串反轉。
