@@ -78,6 +78,17 @@ const config: Config = {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
     },
+    algolia: {
+      // The application ID provided by Algolia
+      appId: "VXYM32HFNE",
+
+      // Public API key: it is safe to commit it
+      apiKey: "bb55a32cb847fa5d50e6bc588cb55699",
+
+      indexName: "solve-problems",
+
+      //... other Algolia params
+    },
   } satisfies Preset.ThemeConfig,
 };
 
