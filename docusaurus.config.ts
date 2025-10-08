@@ -24,6 +24,8 @@ const config: Config = {
           sidebarPath: require.resolve("./sidebars.js"),
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],
+          showLastUpdateTime: true,
+          showLastUpdateAuthor: true,
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
