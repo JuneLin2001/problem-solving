@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/"
+                       xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+  <ShortName>LeetCode and Codewars solutions</ShortName>
+  <Description>Search LeetCode and Codewars solutions</Description>
+  <InputEncoding>UTF-8</InputEncoding>
+  <Image width="16" height="16" type="image/x-icon">https://junelin2001.github.io/solve-problems/img/favicon.ico</Image>
+  <Url type="text/html" method="get" template="https://junelin2001.github.io/solve-problems/search?q={searchTerms}"/>
+  <Url type="application/opensearchdescription+xml" rel="self" template="https://junelin2001.github.io/solve-problems/opensearch.xml" />
+  <moz:SearchForm>https://junelin2001.github.io/solve-problems/</moz:SearchForm>
+</OpenSearchDescription>
