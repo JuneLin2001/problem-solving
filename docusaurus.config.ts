@@ -14,7 +14,11 @@ const config: Config = {
   organizationName: "JuneLin2001",
   deploymentBranch: "gh-pages",
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: "warn",
+    },
+  },
   presets: [
     [
       "classic",
