@@ -1,0 +1,60 @@
+---
+title: Conway's Look and Say - Generalized
+description: Your task is to create a function that will take an integer and return the result of the look-and-say function on that integer. This should be a general function that takes as input any positive integer, and returns an integer; inputs are not limited to the sequence which starts with "1".
+keywords: [Codewars, Conway's Look and Say - Generalized, 5 kyu, Algorithms]
+tags: [Codewars, 5 kyu, Algorithms]
+---
+
+# [{frontMatter.title}](https://www.codewars.com/kata/530045e3c7c0f4d3420001af/train/javascript)
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Solution from "!!raw-loader!./solution.js";
+import Description from "./_Description.md";
+import Examples from "./_Examples.md";
+
+<DifficultyBadge kyu={5} />
+
+<Tabs>
+  <TabItem value="description" label="題目描述" default>
+    <details open>
+      <summary>Description</summary>
+        <Description />
+        <Examples />
+    </details> 
+  </TabItem>
+
+  <TabItem value="solution" label="解答">
+   ## Solution
+    <CodeBlock language="js">{Solution}</CodeBlock>
+  </TabItem>
+</Tabs>
+
+### 解題思路
+
+```js
+function lookSay(number) {
+  const numStr = number.toString();
+  let result = "";
+  let count = 1;
+
+  for (let i = 0; i < numStr.length; i++) {
+    // 如果下一個數字跟現在的一樣，就累加
+    if (numStr[i] === numStr[i + 1]) {
+      count++;
+    } else {
+      // 否則就把目前的統計加進結果字串
+      result += count.toString() + numStr[i];
+      count = 1; // 重置計數
+    }
+  }
+
+  return parseInt(result, 10); // 轉成數字回傳
+}
+```
+
+### 心得
+
+不使用 Object 的 Counter，而是簡化為一個數字。
