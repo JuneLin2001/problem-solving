@@ -1,0 +1,70 @@
+---
+title: 3349. Adjacent Increasing Subarrays Detection I
+description: Given an array nums of n integers and an integer k, determine whether there exist two adjacent subarrays of length k such that both subarrays are strictly increasing. Specifically, check if there are two subarrays starting at indices a and b (a < b)
+keywords:
+  [LeetCode, 3349. Adjacent Increasing Subarrays Detection I, Easy, Array]
+tags: [LeetCode, Easy, Array]
+---
+
+# [{frontMatter.title}](https://leetcode.com/problems/adjacent-increasing-subarrays-detection-i)
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Solution from "!!raw-loader!./solution.js";
+import Description from "./_Description.md";
+import Examples from "./_Examples.md";
+
+<DifficultyBadge difficulty="Easy" />
+
+<Tabs>
+  <TabItem value="description" label="題目描述" default>
+    <details open>
+      <summary>Description</summary>
+        <Description />
+        <Examples />
+    </details> 
+  </TabItem>
+
+  <TabItem value="solution" label="解答">
+   ## Solution
+    <CodeBlock language="js">{Solution}</CodeBlock>
+  </TabItem>
+</Tabs>
+
+### 解題思路
+
+題目要找出是否存在符合條件的兩個 subarray：
+
+- 兩個 subarray 的長度皆為 `k`
+- 兩個 subarray 都是 strictly increasing
+- 兩個 subarray 要相鄰，中間不能有其他值
+
+首先定義一個 helper function `isIncreasing` ，判斷兩個 subarray 是否都是 strictly increasing
+
+```js
+const isIncreasing = (start) => {
+  for (let i = start; i < start + k - 1; i++) {
+    if (nums[i] >= nums[i + 1]) return false;
+  }
+  return true;
+};
+```
+
+接著使用 `isIncreasing` 來判斷是否存在符合條件的兩個 subarray，兩者都嚴格遞增就回傳 true，否則回傳 false
+
+```js
+for (let i = 0; i + 2 * k <= nums.length; i++) {
+  // i + 2 * k 是因為檢查的是兩個長度為 k 的相鄰 subarray
+  // <= nums.length 是因為最後一個 subarray 的範圍不能超過陣列長度
+  if (isIncreasing(i) && isIncreasing(i + k)) {
+    return true;
+  }
+}
+return false;
+```
+
+### 心得
+
+使用 helper function 來簡化結構。
