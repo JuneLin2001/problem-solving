@@ -1,0 +1,125 @@
+---
+title: 3350. Adjacent Increasing Subarrays Detection II
+description: Given an array nums of n integers, your task is to find the maximum value of k for which there exist two adjacent subarrays of length k each, such that both subarrays are strictly increasing. Specifically, check if there are two subarrays of length k starting at indices a and b (a < b)
+keywords:
+  [
+    LeetCode,
+    3350. Adjacent Increasing Subarrays Detection II,
+    Medium,
+    Array,
+    Binary Search,
+  ]
+tags: [LeetCode, Medium, Array, Binary Search]
+---
+
+# [{frontMatter.title}](https://leetcode.com/problems/adjacent-increasing-subarrays-detection-ii)
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Solution from "!!raw-loader!./solution.js";
+import Description from "./_Description.md";
+import Examples from "./_Examples.md";
+
+<DifficultyBadge difficulty="Medium" />
+
+<Tabs>
+  <TabItem value="description" label="題目描述" default>
+    <details open>
+      <summary>Description</summary>
+        <Description />
+        <Examples />
+    </details> 
+  </TabItem>
+
+  <TabItem value="solution" label="解答">
+   ## Solution
+    <CodeBlock language="js">{Solution}</CodeBlock>
+  </TabItem>
+</Tabs>
+
+### 解題思路
+
+與 [上一題](../3349.%20Adjacent%20Increasing%20Subarrays%20Detection%20I/README.mdx) 不同的是這次題目沒有給 `k`，而是變成題目要找出最大的 `k`，且兩個相鄰的 subarray 也都要是 strictly increasing。
+
+1. 首先由於測試範圍是 `2 <= nums.length <= 2 * 105`，故在最小的 nums.length = 2 時直接 return 0。  
+   以及宣告變數
+   - `count` 來記錄當前的 `k`
+   - `preCount` 來紀錄前一段的 `k`
+   - `result` 來紀錄最終的答案 (最大的 `k` )。
+
+```js
+if (nums.length <= 1) {
+  return 0;
+}
+
+let count = 1;
+let preCount = 0;
+let result = 1;
+```
+
+2. 接著遍歷陣列，如果下一個數字大於現在的數字，代表目前 strictly increasing，將 `count` 加一，否則就更新 `result`。
+
+```js
+for (let i = 1; i < nums.length; i++) {
+  if (nums[i] > nums[i - 1]) {
+    count++;
+  } else {
+    result = Math.max(result, Math.floor(count / 2));
+    result = Math.max(result, Math.min(count, preCount));
+    preCount = count; // 將 preCount 更新為當前的 count
+    count = 1; // 重置 count
+  }
+}
+```
+
+<details open>
+  <summary>更新 result 的步驟</summary>
+    <Tabs>
+  <TabItem value="Math.floor(count / 2)" label="Math.floor(count / 2)">
+
+    > `Math.floor(count / 2)` 是用來處理「單一區段連續遞增」的情況。
+
+    假設 `nums = [1, 2, 3, 4, 5, 6]`，這裡的 count = 6。
+    且因為這一整段是遞增的，所以可以被切成兩個長度為 3 的子陣列：
+
+    - `[1, 2, 3]`
+    - `[4, 5, 6]`
+
+    所以這段裡面最大的 k 可以是 count / 2 = 3。（如果長度是奇數，比如 5，那最大可切成 Math.floor(5 / 2) = 2。）
+
+  </TabItem>
+      <TabItem value="Math.min(count, preCount)" label="Math.min(count, preCount)">
+        
+    > `Math.min(count, preCount)` 是用來處理「有斷掉」的情況。
+
+    假設 `nums = [2, 3, 4, 5, 1, 2, 3]`
+
+    這整段不是 strictly increasing，中間有斷掉，故可以拆成
+      - `[2, 3, 4, 5]` // count = 4
+      - `[1, 2, 3]`    // count = 3，preCount = 4
+
+而形成的最大 `k` 是兩段中「較短」的那一段長度，故上述例子的最大 `k` 為 3。
+
+  </TabItem>
+
+  </Tabs>
+</details>
+
+3. 而 for 迴圈結束後最後一段遞增區間還沒被結算
+   > 假設 `nums = [1, 2, 3, 4, 5]`，迴圈跑完時，count = 5，但因為從頭到尾沒遇到遞增中斷，else 從未執行
+
+因此最後再判斷一次即可。
+
+```js
+result = Math.max(result, Math.floor(count / 2));
+result = Math.max(result, Math.min(count, preCount));
+
+return result;
+```
+
+### 心得
+
+複雜死ㄌ：（  
+一直鬼打牆瘋狂看解析才搞懂原理。
