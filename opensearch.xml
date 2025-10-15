@@ -4,8 +4,8 @@
   <ShortName>LeetCode and Codewars solutions</ShortName>
   <Description>Search LeetCode and Codewars solutions</Description>
   <InputEncoding>UTF-8</InputEncoding>
-  <Image width="16" height="16" type="image/x-icon">https://junelin2001.github.io/poblem-solving/img/favicon.ico</Image>
-  <Url type="text/html" method="get" template="https://junelin2001.github.io/poblem-solving/search?q={searchTerms}"/>
-  <Url type="application/opensearchdescription+xml" rel="self" template="https://junelin2001.github.io/poblem-solving/opensearch.xml" />
-  <moz:SearchForm>https://junelin2001.github.io/poblem-solving/</moz:SearchForm>
+  <Image width="16" height="16" type="image/x-icon">https://junelin2001.github.io/problem-solving/img/favicon.ico</Image>
+  <Url type="text/html" method="get" template="https://junelin2001.github.io/problem-solving/search?q={searchTerms}"/>
+  <Url type="application/opensearchdescription+xml" rel="self" template="https://junelin2001.github.io/problem-solving/opensearch.xml" />
+  <moz:SearchForm>https://junelin2001.github.io/problem-solving/</moz:SearchForm>
 </OpenSearchDescription>
