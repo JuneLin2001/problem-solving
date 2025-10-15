@@ -9,8 +9,8 @@ const config: Config = {
   tagline: "記錄自己 Leetcode 和 Codewars 刷題的紀錄",
   favicon: "img/favicon.ico",
   url: "https://junelin2001.github.io",
-  baseUrl: "/poblem-solving",
-  projectName: "/poblem-solving",
+  baseUrl: "/problem-solving",
+  projectName: "/problem-solving",
   organizationName: "JuneLin2001",
   deploymentBranch: "gh-pages",
   onBrokenLinks: "throw",
@@ -64,7 +64,7 @@ const config: Config = {
         },
         { to: "/about", label: "About", position: "left" },
         {
-          href: "https://github.com/JuneLin2001//poblem-solving",
+          href: "https://github.com/JuneLin2001//problem-solving",
           label: "GitHub",
           position: "right",
         },
@@ -85,7 +85,7 @@ const config: Config = {
       // Public API key: it is safe to commit it
       apiKey: "bb55a32cb847fa5d50e6bc588cb55699",
 
-      indexName: "poblem-solving",
+      indexName: "problem-solving",
 
       //... other Algolia params
     },
