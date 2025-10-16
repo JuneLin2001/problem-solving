@@ -1,8 +1,8 @@
 # LeetCode and Codewars
 
-放自己 Leetcode 和 Codewars 刷題的紀錄，包含解題思路與心得，並使用 Docusaurus 實現簡單部署。
+放自己 Leetcode 和 Codewars 刷題的紀錄，包含解題思路與心得，並使用 Docusaurus 實現靜態網站部署。
 
-> [網站連結](https://junelin2001.github.io/poblem-solving)
+> [網站連結](https://junelin2001.github.io/problem-solving)
 
 ## Built With
 
