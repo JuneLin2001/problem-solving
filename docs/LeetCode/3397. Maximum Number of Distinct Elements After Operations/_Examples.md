@@ -1,0 +1,19 @@
+#### Example 1:
+
+> **Input:** nums = [1,2,2,3,3,4], k = 2  
+> **Output:** 6  
+> **Explanation:**
+> nums changes to [-1, 0, 1, 2, 3, 4] after performing operations on the first four elements.
+
+#### Example 2:
+
+> **Input:** nums = [4,4,4,4], k = 1  
+> **Output:** 3
+> **Explanation:**
+> By adding -1 to nums[0] and 1 to nums[1], nums changes to [3, 5, 4, 4].
+
+#### Constraints:
+
+- `1 <= nums.length <= 105`
+- `-1 <= nums[i] <= 109`
+- `0 <= k <= 109`

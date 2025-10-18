@@ -1,0 +1,98 @@
+---
+title: 3397. Maximum Number of Distinct Elements After Operations
+description: You are given an integer array nums and an integer k.You are allowed to perform the following operation on each element of the array at most once:Add an integer in the range [-k, k] to the element.Return the maximum possible number of distinct elements in nums after performing the operations.
+keywords:
+  [
+    LeetCode,
+    3397. Maximum Number of Distinct Elements After Operations,
+    Medium,
+    Array,
+    Greedy,
+    Sorting,
+  ]
+tags: [LeetCode, Medium, Array, Greedy, Sorting]
+---
+
+# [{frontMatter.title}](https://leetcode.com/problems/maximum-number-of-distinct-elements-after-operations)
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Solution from "!!raw-loader!./solution.js";
+import Description from "./_Description.md";
+import Examples from "./_Examples.md";
+
+<DifficultyBadge difficulty="Medium" />
+
+<Tabs>
+  <TabItem value="description" label="題目描述" default>
+    <details open>
+      <summary>Description</summary>
+        <Description />
+        <Examples />
+    </details> 
+  </TabItem>
+
+  <TabItem value="solution" label="解答">
+   ## Solution
+    <CodeBlock language="js">{Solution}</CodeBlock>
+  </TabItem>
+</Tabs>
+
+### 解題思路
+
+題目給的是一個整數陣列 `nums` 和一個整數 `k`，每個數最多可加上或減去一個介於 `[-k, k]` 的值（也可以不加減），目標是找出最多有幾個不同的數字。
+
+1. 首先由小到大排序 `nums`，並定義兩個變數 `count` 和 `prev`。
+
+:::info
+
+需要由小到大排序的原因是要確保貪婪演算法的策略正確  
+例如 [3,1,1], k=1，若不排序：
+
+1. 先處理 3， 根據貪婪演算法放 num - k = 2，
+2. 接下來處理 1 ，根據貪婪演算法放 prev + 1 = 3 ，但範圍是 [0,2]， 3 超出範圍不能放。
+
+排序後 [1,1,3]：
+
+1. 前面的 1 可以放 0,1,2，根據貪婪演算法放 0
+2. 第 2 個 1 放 prev + 1 = 1
+3. 後面的 3 放 num - k = 3
+
+這樣就可以塞更多不重複數。
+
+:::
+
+```js
+nums.sort((a, b) => a - b);
+
+let count = 0; // 記錄目前有幾個不同的數字
+let prev = -Infinity; // 記錄上一個不重複的數字，初始值為負無限大，確保一定會比下一個數字小
+```
+
+1. 逐步處理每個數，主要邏輯是找出這個數最小且不重複的可以放的值。
+
+```js
+for (const num of nums) {
+  let curr = Math.max(num - k, prev + 1);
+  //   num - k 代表當前這個數最小能變成的值
+  //   prev + 1 代表必須比前一個大才不重複
+  //   Math.max 用以取兩個值中較大的，確保合規定又不重複
+  if (curr <= num + k) {
+    // 如果這個數可以放
+    count++;
+    prev = curr; // 更新 prev 來記錄上一個數字
+  }
+}
+```
+
+3. 最後回傳 `count` 就是答案。
+
+```js
+return count;
+```
+
+### 心得
+
+貪婪演算法
