@@ -1,0 +1,49 @@
+---
+title: 2011. Final Value of Variable After Performing Operations
+description: There is a programming language with only four operations and one variable X. Given an array of strings operations containing a list of operations, return the final value of X after performing all the operations.
+keywords:
+  [
+    LeetCode,
+    2011. Final Value of Variable After Performing Operations,
+    Easy,
+    Array,
+    String,
+    Simulation,
+  ]
+tags: [LeetCode, Easy, Array, String, Simulation]
+---
+
+# [{frontMatter.title}](https://leetcode.com/problems/final-value-of-variable-after-performing-operations/)
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Solution from "!!raw-loader!./solution.js";
+import Description from "./_Description.md";
+import Examples from "./_Examples.md";
+
+<DifficultyBadge difficulty="Easy" />
+
+<Tabs>
+  <TabItem value="description" label="題目描述" default>
+    <details open>
+      <summary>Description</summary>
+        <Description />
+        <Examples />
+    </details> 
+  </TabItem>
+
+  <TabItem value="solution" label="解答">
+   ## Solution
+    <CodeBlock language="js">{Solution}</CodeBlock>
+  </TabItem>
+</Tabs>
+
+### 解題思路
+
+因為只會有 `"++X"`, `"X++"`, `"--X"`, `"X--"` 四種狀況，所以可以簡單使用 `.includes()` 來判斷是加或減。
+
+### 心得
+
+滿直觀簡單的題目！
