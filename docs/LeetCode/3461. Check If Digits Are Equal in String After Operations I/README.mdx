@@ -1,0 +1,85 @@
+---
+title: 3461. Check If Digits Are Equal in String After Operations I
+description: You are given a string s consisting of digits. Perform the following operation repeatedly until the string has exactly two digits:For each pair of consecutive digits in s, starting from the first digit, calculate a new digit as the sum of the two digits modulo 10. Replace s with the sequence of newly calculated digits, maintaining the order in which they are computed. Return true if the final two digits in s are the same; otherwise, return false.
+keywords: [
+    LeetCode,
+    3461. Check If Digits Are Equal in String After Operations I,
+    Easy,
+    Math
+    String,
+    Simulation,
+    Combinatorics,
+    Number Theory,
+  ]
+tags: [
+    LeetCode,
+    Easy,
+    Math
+    String,
+    Simulation,
+    Combinatorics,
+    Number Theory,
+  ]
+---
+
+# [{frontMatter.title}](https://leetcode.com/problems/check-if-digits-are-equal-in-string-after-operations-i)
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Solution from "!!raw-loader!./solution.js";
+import Description from "./_Description.md";
+import Examples from "./_Examples.md";
+
+<DifficultyBadge difficulty="Easy" />
+
+<Tabs>
+  <TabItem value="description" label="題目描述" default>
+    <details open>
+      <summary>Description</summary>
+        <Description />
+        <Examples />
+    </details> 
+  </TabItem>
+
+  <TabItem value="solution" label="解答">
+   ## Solution
+    <CodeBlock language="js">{Solution}</CodeBlock>
+  </TabItem>
+</Tabs>
+
+### 解題思路
+
+題目的 `Hint 1` 寫：Simulate the operations as described.  
+所以就暴力解，直接把題目描述轉成程式碼。
+
+```js
+var hasSameDigits = function (s) {
+  while (s.length >= 3) {
+    // 當字串長度仍大於3時候就重複執行
+    temp = ""; //定義一個空字串當暫時的容器
+
+    for (let i = 0; i < s.length - 1; i++) {
+      //因為是 i 和 i + 1，所以要 length - 1 才能正確比對
+      temp += ((parseInt(s[i]) + parseInt(s[i + 1])) % 10).toString(); //把目前運算的結果儲存進容器
+    }
+
+    s = temp; //更新s的值，每次完成一輪 while 迴圈長度會少 1
+  }
+
+  return s[0] === s[1];
+  // 直到剩兩個值就脫離 while 迴圈並 return 結果
+  // 若兩者相同則 True，反之 False
+};
+```
+
+### 心得
+
+看 Discussion 有人貼了這兩張圖：
+
+![](https://assets.leetcode.com/users/images/910b1c5d-a6a8-4d97-9fd5-775f856c209e_1761200322.2593112.png)
+
+![](https://assets.leetcode.com/users/images/f3938dd6-8fad-452b-ae4b-b4846d68f964_1761186613.4321.png)
+
+似乎可以用[巴斯卡三角形](https://zh.wikipedia.org/zh-tw/%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92%E5%BD%A2)來解這題，但還沒滲透這個進階解法，也許之後再回來試試看！
