@@ -1,81 +1,43 @@
 ---
 title: 1752. Check if Array Is Sorted and Rotated
 description: Given an array nums, return true if the array was originally sorted in non-decreasing order, then rotated some number of positions (including zero). Otherwise, return false.
-keywords: [LeetCode, 1752. Check if Array Is Sorted and Rotated, Easy,Array]
+keywords: [LeetCode, 1752. Check if Array Is Sorted and Rotated, Easy, Array]
+tags: [LeetCode, Easy, Array]
 ---
 
 # [{frontMatter.title}](https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/)
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
 import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Solution from "!!raw-loader!./solution.js";
+import Description from "./_Description.md";
+import Examples from "./_Examples.md";
 
 <DifficultyBadge difficulty="Easy" />
 
 <Tabs>
   <TabItem value="description" label="題目描述" default>
-    ## Description
-   Given an array nums, return true if the array was originally sorted in non-decreasing order, then rotated some number of positions (including zero). Otherwise, return false.
-
-There may be duplicates in the original array.
-
-Note: An array A rotated by x positions results in an array B of the same length such that A[i] == B[(i+x) % A.length], where % is the modulo operation.
-
- 
-
-#### Example 1:
-Input: nums = [3,4,5,1,2]
-Output: true
-Explanation: [1,2,3,4,5] is the original sorted array.
-You can rotate the array by x = 3 positions to begin on the the element of value 3: [3,4,5,1,2].
-
-#### Example 2:
-Input: nums = [2,1,3,4]
-Output: false
-Explanation: There is no sorted array once rotated that can make nums.
-
-#### Example 3:
-Input: nums = [1,2,3]
-Output: true
-Explanation: [1,2,3] is the original sorted array.
-You can rotate the array by x = 0 positions (i.e. no rotation) to make nums.
- 
-
-## Constraints:
-
-```
-1 <= nums.length <= 100
-1 <= nums[i] <= 100
-```
-
-
-Follow up: Suppose there are lots of incoming s, say s1, s2, ..., sk where k >= 109, and you want to check one by one to see if t has its subsequence. In this scenario, how would you change your code?
+    <details open>
+      <summary>Description</summary>
+        <Description />
+        <Examples />
+    </details> 
   </TabItem>
+
   <TabItem value="solution" label="解答">
    ## Solution
-```js
-/**
- * @param {number[]} nums
- * @return {boolean}
- */
-var check = function (nums) {
-  let count = 0;
-
-  for (i = 0; i < nums.length; i++) {
-    if (nums[i] > nums[(i + 1) % nums.length]) {
-      count++;
-    }
-  }
-
-  return count <= 1;
-};
-
-```
+    <CodeBlock language="js">{Solution}</CodeBlock>
   </TabItem>
 </Tabs>
 
-
 ## 解題思路
-想法就是暴力解的遍歷陣列比較陣列是否為非遞減（[3,3,3,3]這種全部都同一個數的也算非遞減所以會是 true），但由於陣列可能是旋轉過的所以有1次的寬限，如果不只1次的話就要算 false 了
+
+想法就是暴力解的遍歷陣列比較陣列是否為非遞減（`[3,3,3,3]` 這種全部都同一個數的也算非遞減所以會是 `true`）
+
+但由於陣列可能是旋轉過的所以有 1 次的寬限，如果不只 1 次的話就要算 `false` 了
+
 ## 心得
-U點小難，一開始沒看懂題目 Rotated 的意思，想說為何[2,1]也算true，後來再讀一次之後把邏輯打掉重寫一次才成功
+
+U 點小難，一開始沒看懂題目 Rotated 的意思，想說為何 `[2,1]` 也算 `true`，後來再讀一次之後把邏輯打掉重寫一次才成功

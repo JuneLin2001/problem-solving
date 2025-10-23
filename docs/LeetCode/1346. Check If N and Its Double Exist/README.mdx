@@ -1,75 +1,58 @@
 ---
 title: 1346. Check If N and Its Double Exist
 description: Given an array arr of integers, check if there exist two indices i and j such that
-keywords: [LeetCode, 1346. Check If N and Its Double Exist, Easy, Array ,Hash Table, Two Pointers, Binary Search, Sorting]
+keywords:
+  [
+    LeetCode,
+    1346. Check If N and Its Double Exist,
+    Easy,
+    Array,
+    Hash Table,
+    Two Pointers,
+    Binary Search,
+    Sorting,
+  ]
+tags: [LeetCode, Easy, Array, Hash Table, Two Pointers, Binary Search, Sorting]
 ---
 
 # [{frontMatter.title}](https://leetcode.com/problems/check-if-n-and-its-double-exist)
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
 import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Solution from "!!raw-loader!./solution.js";
+import Description from "./_Description.md";
+import Examples from "./_Examples.md";
 
 <DifficultyBadge difficulty="Easy" />
 
 <Tabs>
   <TabItem value="description" label="題目描述" default>
-    ## Description
-
-Given an array `arr` of integers, check if there exist two indices `i` and `j` such that :  
-
- - `i != j`
- - `0 <= i, j < arr.length`
- - `arr[i] == 2 * arr[j]`
-
-#### Example 1:
-> **Input:**: arr = [10,2,5,3]  
-**Output:**: true  
-**Explanation:**: For i = 0 and j = 2, arr[i] == 10 == 2 * 5 == 2 * arr[j]
-
-#### Example 2:
->**Input:** arr = [3,1,7,11]  
-**Output:** false  
-**Explanation:** There is no i and j that satisfy the conditions.
-
-#### Constraints:
- - `1 <= numBottles <= 100`
- - `2 <= numExchange <= 100`
-
+    <details open>
+      <summary>Description</summary>
+        <Description />
+        <Examples />
+    </details> 
   </TabItem>
+
   <TabItem value="solution" label="解答">
    ## Solution
-```js
-/**
- * @param {number[]} arr
- * @return {boolean}
- */
-var checkIfExist = function (arr) {
-  const existSet = new Set();
-
-  for (let i = 0; i < arr.length; i++) {
-    if (existSet.has(arr[i] * 2) || existSet.has(arr[i] / 2)) {
-      return true;
-    }
-
-    existSet.add(arr[i]);
-  }
-
-  return false;
-};
-```
+    <CodeBlock language="js">{Solution}</CodeBlock>
   </TabItem>
 </Tabs>
 
-
 ## 解題思路
-使用一個 Set 來不重複的記錄下已經過的值，接著遍歷一遍 `arr`，共有兩種狀況會判斷為 true
- 1. 若當下的數字 `arr[i]` 的兩倍存在於 `Set` 之中的話就代表當下的數字符合 `j` 且 Set 中抓到的那個數字符合 `i`
- 2. 若當下的數字 `arr[i]` 的一半存在於 `Set` 之中的話就代表當下的數字符合 `i` 且 Set 中抓到的那個數字符合 `j`  
 
-檢查完兩者後若都不符合就把當前的 `arr[i]` 加進 `Set` 中  
+使用一個 Set 來不重複的記錄下已經過的值，接著遍歷一遍 `arr`，共有兩種狀況會判斷為 true
+
+1.  若當下的數字 `arr[i]` 的兩倍存在於 `Set` 之中的話就代表當下的數字符合 `j` 且 Set 中抓到的那個數字符合 `i`
+2.  若當下的數字 `arr[i]` 的一半存在於 `Set` 之中的話就代表當下的數字符合 `i` 且 Set 中抓到的那個數字符合 `j`
+
+檢查完兩者後若都不符合就把當前的 `arr[i]` 加進 `Set` 中
 
 遍歷完都不符合的話就是 false 了
 
 ## 心得
-直覺想到用 Set，結果成功了好耶！ 
+
+直覺想到用 Set，結果成功了好耶！

@@ -1,61 +1,55 @@
 ---
 title: 349. Intersection of Two Arrays
 description: Given two integer arrays nums1 and nums2, return an array of their intersection. Each element in the result must be unique and you may return the result in any order.
-keywords: [LeetCode, 349. Intersection of Two Arrays, Easy,Array,Hash Table,Two Pointers,Binary Search,Sorting]
+keywords:
+  [
+    LeetCode,
+    349. Intersection of Two Arrays,
+    Easy,
+    Array,
+    Hash Table,
+    Two Pointers,
+    Binary Search,
+    Sorting,
+  ]
+tags: [LeetCode, Easy, Array, Hash Table, Two Pointers, Binary Search, Sorting]
 ---
 
 # [{frontMatter.title}](https://leetcode.com/problems/intersection-of-two-arrays/)
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
 import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Solution from "!!raw-loader!./solution.js";
+import Description from "./_Description.md";
+import Examples from "./_Examples.md";
 
 <DifficultyBadge difficulty="Easy" />
 
 <Tabs>
   <TabItem value="description" label="題目描述" default>
-    ## Description
-
-Given two integer arrays nums1 and nums2, return an array of their 
-intersection. Each element in the result must be unique and you may return the result in any order.
-
-#### Example 1:
-Input: nums1 = [1,2,2,1], nums2 = [2,2]
-Output: [2]
-
-#### Example 2:
-Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]
-Output: [9,4]
-Explanation: [4,9] is also accepted.
-
-#### Constraints:
-```
-1 <= nums1.length, nums2.length <= 1000
-0 <= nums1[i], nums2[i] <= 1000
-```  
-
+    <details open>
+      <summary>Description</summary>
+        <Description />
+        <Examples />
+    </details> 
   </TabItem>
+
   <TabItem value="solution" label="解答">
    ## Solution
-```js
-/**
- * @param {number[]} nums1
- * @param {number[]} nums2
- * @return {number[]}
- */
-var intersection = function (nums1, nums2) {
-  const set1 = new Set(nums1);
-  const set2 = new Set(nums2);
-
-  return [...set1].filter((num) => set2.has(num));
-};
-```
+    <CodeBlock language="js">{Solution}</CodeBlock>
   </TabItem>
 </Tabs>
 
-
 ## 解題思路
-原本想用 Counter 之類的做法，但看到 `Set 的特色是有 has() 這個方法，可以快速判斷該 Set 中是否包含某個元素` 就直接用這個特性來大幅簡化了。
+
+原本想用 Counter 之類的做法，但看到：
+
+> `Set 的特色是有 has() 這個方法，可以快速判斷該 Set 中是否包含某個元素`
+
+就直接用這個特性來大幅簡化了。
 
 ## 心得
-謝謝PJ大佬的筆記 [[JS] JavaScript 集合（Set）](https://pjchender.dev/javascript/js-set/), 只要熟練語法基本就能秒解開一堆 easy 了。
+
+謝謝 PJ 大佬的筆記 [[JS] JavaScript 集合（Set）](https://pjchender.dev/javascript/js-set/), 只要熟練語法基本就能秒解開一堆 easy 了。

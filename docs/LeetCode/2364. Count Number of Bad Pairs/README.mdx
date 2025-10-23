@@ -1,91 +1,63 @@
 ---
 title: 2364. Count Number of Bad Pairs
 description: You are given a 0-indexed integer array nums. A pair of indices (i, j) is a bad pair if i < j and j - i != nums[j] - nums[i]. Return the total number of bad pairs in nums.
-keywords: [LeetCode, 2364. Count Number of Bad Pairs, Medium,Array,Hash Table,Math,Counting]
+keywords:
+  [
+    LeetCode,
+    2364. Count Number of Bad Pairs,
+    Medium,
+    Array,
+    Hash Table,
+    Math,
+    Counting,
+  ]
+tags: [LeetCode, Medium, Array, Hash Table, Math, Counting]
 ---
 
 # [{frontMatter.title}](https://leetcode.com/problems/count-number-of-bad-pairs/)
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
 import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Solution from "!!raw-loader!./solution.js";
+import Description from "./_Description.md";
+import Examples from "./_Examples.md";
 
 <DifficultyBadge difficulty="Medium" />
 
 <Tabs>
   <TabItem value="description" label="題目描述" default>
-    ## Description
-
-You are given a 0-indexed integer array nums. A pair of indices (i, j) is a bad pair if i < j and j - i != nums[j] - nums[i].
-
-Return the total number of bad pairs in nums.
-
-#### Example 1:
-Input: nums = [4,1,3,3]  
-Output: 5  
-Explanation: The pair (0, 1) is a bad pair since 1 - 0 != 1 - 4.  
-The pair (0, 2) is a bad pair since 2 - 0 != 3 - 4, 2 != -1.  
-The pair (0, 3) is a bad pair since 3 - 0 != 3 - 4, 3 != -1.  
-The pair (1, 2) is a bad pair since 2 - 1 != 3 - 1, 1 != 2.  
-The pair (2, 3) is a bad pair since 3 - 2 != 3 - 3, 1 != 0.  
-There are a total of 5 bad pairs, so we return 5.  
-
-#### Example 2:
-Input: nums = [1,2,3,4,5]  
-Output: 0  
-Explanation: There are no bad pairs.
-
-## Constraints:
-```
-1 <= nums.length <= 105
-1 <= nums.length <= 105
-```
-
+    <details open>
+      <summary>Description</summary>
+        <Description />
+        <Examples />
+    </details> 
   </TabItem>
+
   <TabItem value="solution" label="解答">
    ## Solution
-```js
-/**
- * @param {number[]} nums
- * @return {number}
- */
-var countBadPairs = function (nums) {
-  let arrLength = nums.length;
-  let goodPairs = 0;
-  let totalPairs = (arrLength * (arrLength - 1)) / 2;
-  let HashMap = new Map();
-
-  for (let i = 0; i < arrLength; i++) {
-    let diff = i - nums[i];
-    if (HashMap.has(diff)) {
-      goodPairs += HashMap.get(diff);
-      HashMap.set(diff, HashMap.get(diff) + 1);
-    } else {
-      HashMap.set(diff, 1);
-    }
-  }
-
-  return totalPairs - goodPairs;
-};
-
-```
+    <CodeBlock language="js">{Solution}</CodeBlock>
   </TabItem>
 </Tabs>
 
-
 ## 解題思路
+
 Hint 1 寫到 `Would it be easier to count the number of pairs that are not bad pairs?` ，所以這邊可以整理出:
- - 如果 nums[i] - i == nums[j] - j，(i, j) 是好對數（good pair）。
- - 如果 nums[i] - i ≠ nums[j] - j，(i, j) 是壞對數（bad pair）。
 
-因此解法可以利用哈希表（Map）計算「好對數」，最後把( 總對數 − 好對數 )就是題目需要的壞對數了
+- 如果 `nums[i] - i == nums[j] - j`，`(i, j)` 是好對數（good pair）。
+- 如果 `nums[i] - i ≠ nums[j] - j`，`(i, j)` 是壞對數（bad pair）。
 
-用一個 哈希表（Map） 來記錄每個 nums[i] - i 的出現次數，利用 nums[i] - i 作為 key，可以快速統計好對數（O(n)）。
+因此解法可以利用 Hash Map 計算「好對數」，最後把 ( 總對數 − 好對數 ) 就是題目需要的壞對數了
+
+用一個 Hash Map 來記錄每個 nums[i] - i 的出現次數，利用 nums[i] - i 作為 key，可以快速統計好對數（O(n)）。
 
 定義 diff 是 數字 nums[i] 與它的索引 i 之間的差值
 遍歷 nums 陣列，對於每個 i，計算 diff = nums[i] - i。  
 如果 diff 在 Map 裡出現過，表示之前已經有相同 diff，那麼這些 diff 可以和 nums[i] 配對形成「好對數」。  
-將 diff 加入 Map，並更新計數，用來計算未來的「好對數」。  
+將 diff 加入 Map，並更新計數，用來計算未來的「好對數」。
 
 ## 心得
-原本想用時間複雜度 O(n²) 的暴力解但會超時,看了 Hint 3 的`Keep a counter of nums[i] - i. To be efficient, use a HashMap.`之後便改用現在解法
+
+原本想用時間複雜度 O(n²) 的暴力解但會超時  
+看了 Hint 3 的`Keep a counter of nums[i] - i. To be efficient, use a HashMap.`之後便改用現在解法

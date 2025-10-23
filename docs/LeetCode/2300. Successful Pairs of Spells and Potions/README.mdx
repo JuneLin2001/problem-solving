@@ -11,35 +11,29 @@ keywords:
     Binary Search,
     Sorting,
   ]
+tags: [LeetCode, Medium, Array, Two Pointers, Binary Search, Sorting]
 ---
 
 # [{frontMatter.title}](https://leetcode.com/problems/successful-pairs-of-spells-and-potions)
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
-import CodeBlock from '@theme/CodeBlock';
+import CodeBlock from "@theme/CodeBlock";
 import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
-import Solution from '!!raw-loader!./solution.js';
-import Description from "./_Description.md"
-import Examples from "./_Examples.md"
-import Constraints from "./_Constraints.md"
+import Solution from "!!raw-loader!./solution.js";
+import Description from "./_Description.md";
+import Examples from "./_Examples.md";
 
 <DifficultyBadge difficulty="Medium" />
 
 <Tabs>
   <TabItem value="description" label="題目描述" default>
-
-<details open>
-  <summary>Description</summary>
-    <Description />
-    <Examples />
-    <Constraints />
-
-</details>
-    
+    <details open>
+      <summary>Description</summary>
+        <Description />
+        <Examples />
+    </details> 
   </TabItem>
-
-
 
   <TabItem value="solution" label="解答">
    ## Solution
@@ -52,6 +46,7 @@ import Constraints from "./_Constraints.md"
 需要根據 `spells` 陣列中的每個元素來找到符合條件的 `potions` 陣列中的元素，再計算出符合條件的元素的數量，並將數量 push 到 `result` 陣列中。
 
 使用 [binary search](../../資料結構與演算法/Binary%20Search) 來解題，因為 `potions` 陣列不一定是照順序，所以要先對 potions 陣列進行排序
+
 ```js
 const sortPotions = potions.sort((a, b) => a - b);
 // sort((a, b) => a - b) 代表由小到大排序，[3,1,2,4] => [1,2,3,4]
@@ -59,30 +54,29 @@ const sortPotions = potions.sort((a, b) => a - b);
 
 再來遍歷 `spells` 陣列，透過 [binary search](../../資料結構與演算法/Binary%20Search) 來找到符合條件的 potion 的起點。  
 根據起點來計算出符合條件的 potion 的數量，並將數量 push 到 `result` 陣列中。
+
 ```js
+for (let i = 0; i < spells.length; i++) {
+  let left = 0;
+  let right = sortPotions.length - 1;
 
-  for (let i = 0; i < spells.length; i++) {
-    let left = 0;
-    let right = sortPotions.length - 1;
-
-    while (left <= right) {
-      const mid = Math.floor((left + right) / 2);
-      if (spells[i] * sortPotions[mid] < success) {
-        left = mid + 1; 
-        /* 如果小於 success 代表符合條件的 potion 的起點在右邊，
+  while (left <= right) {
+    const mid = Math.floor((left + right) / 2);
+    if (spells[i] * sortPotions[mid] < success) {
+      left = mid + 1;
+      /* 如果小於 success 代表符合條件的 potion 的起點在右邊，
          故要把目前的 mid 當成新的 left，繼續往右邊找 */
-      } else {
-        right = mid - 1; 
-        /* 反之則把目前的 mid - 1 當成新的 right，繼續往左邊找。
+    } else {
+      right = mid - 1;
+      /* 反之則把目前的 mid - 1 當成新的 right，繼續往左邊找。
            如果不減一則有可能讓 mid 還是同一個值，導致無限迴圈 */
-      }
     }
-
-    result.push(sortPotions.length - left);
   }
+
+  result.push(sortPotions.length - left);
+}
 ```
 
 ### 心得
 
-不太直觀，若不使用 binary search 的話會導致 Time Limit Exceeded，故需要使用時間複雜度為 O(log n) 的 binary search。
-
+不太直觀，若不使用 binary search 的話會導致 Time Limit Exceeded，故需要使用時間複雜度為 `O(log n)` 的 binary search。

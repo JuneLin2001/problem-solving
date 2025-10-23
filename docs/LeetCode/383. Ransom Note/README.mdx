@@ -1,87 +1,45 @@
 ---
 title: 383. Ransom Note
 description: Given two strings ransomNote and magazine, return true if ransomNote can be constructed by using the letters from magazine and false otherwise.
-keywords: [LeetCode, 383. Ransom Note, Easy,Hash Table,String,Counting]
+keywords: [LeetCode, 383. Ransom Note, Easy, Hash Table, String, Counting]
+tags: [LeetCode, Easy, Hash Table, String, Counting]
 ---
 
 # [{frontMatter.title}](https://leetcode.com/problems/ransom-note)
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
 import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Solution from "!!raw-loader!./solution.js";
+import Description from "./_Description.md";
+import Examples from "./_Examples.md";
 
 <DifficultyBadge difficulty="Easy" />
 
 <Tabs>
   <TabItem value="description" label="題目描述" default>
-    ## Description
-
-Given two strings ransomNote and magazine, return true if ransomNote can be constructed by using the letters from magazine and false otherwise.
-
-Each letter in magazine can only be used once in ransomNote.
-
- 
-
-#### Example 1:
-Input: ransomNote = "a", magazine = "b"  
-Output: false
-
-#### Example 2:
-Input: ransomNote = "aa", magazine = "ab"  
-Output: false
-
-#### Example 3:
-Input: ransomNote = "aa", magazine = "aab"  
-Output: true
-
-
-## Constraints:
-```
-1 <= ransomNote.length, magazine.length <= 105
-ransomNote and magazine consist of lowercase English letters.
-```
+    <details open>
+      <summary>Description</summary>
+        <Description />
+        <Examples />
+    </details> 
   </TabItem>
+
   <TabItem value="solution" label="解答">
    ## Solution
-```js title="JavaScript"
-/**
- * @param {string} ransomNote
- * @param {string} magazine
- * @return {boolean}
- */
-var canConstruct = function (ransomNote, magazine) {
-  let counter = {};
-
-  for (let i = 0; i < magazine.length; i++) {
-    if (counter[magazine[i]]) {
-      counter[magazine[i]]++;
-    } else {
-      counter[magazine[i]] = 1;
-    }
-  }
-
-  for (let i = 0; i < ransomNote.length; i++) {
-    if (counter[ransomNote[i]]) {
-      counter[ransomNote[i]]--;
-    } else {
-      return false;
-    }
-  }
-
-  return true;
-};
-
-```
+    <CodeBlock language="js">{Solution}</CodeBlock>
   </TabItem>
 </Tabs>
 
-
 ## 解題思路
+
 先定義一個 Counter，並記錄 magazine 中出現過的單字頻率，接著使用 Counter 當基底逐一減去 ransomNote 的單字，能成功的話就是 true，有一個字不存在就是 false 。
 
 ## 心得
-練習 Counter 的基本題，感覺可以再最佳化寫法！  
 
-然後這題的變數叫做 magazine + 題目名稱叫做 Ransom Note（勒索信），就4用雜誌單字拼拼湊湊來讓收到的認不出筆跡的那個
+練習 Counter 的基本題，感覺可以再最佳化寫法！
+
+然後這題的變數叫做 magazine ，然後題目名稱叫做 Ransom Note（勒索信），指的就是卡通或電影裡面常出現，用雜誌單字拼拼湊湊來讓收到的認不出筆跡的那個：
 
 ![](https://media.newyorker.com/photos/613533f6d6630c206e78aec2/1:1/w_1947,h_1947,c_limit/Shouts-RansomNote.jpg)

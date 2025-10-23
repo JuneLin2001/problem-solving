@@ -1,65 +1,54 @@
 ---
 title: 2235. Add Two Integers
 description: You are given two strings s1 and s2 of equal length. A string swap is an operation where you choose two indices in a string (not necessarily different) and swap the characters at these indices. Return true if it is possible to make both strings equal by performing at most one string swap on exactly one of the strings. Otherwise, return false.
-keywords: [LeetCode, 2235. Add Two Integers, Easy,Hash Table,String,Counting]
+keywords: [LeetCode, 2235. Add Two Integers, Easy, Hash Table, String, Counting]
+tags: [LeetCode, Easy, Hash Table, String, Counting]
 ---
 
 # [{frontMatter.title}](https://leetcode.com/problems/add-two-integers/description/)
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
 import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import SolutionJs from "!!raw-loader!./solution.js";
+import SolutionTs from "!!raw-loader!./solution.ts";
+import SolutionPy from "!!raw-loader!./solution.py";
+import Description from "./_Description.md";
+import Examples from "./_Examples.md";
 
 <DifficultyBadge difficulty="Easy" />
 
 <Tabs>
   <TabItem value="description" label="題目描述" default>
-    ## Description
-Given two integers num1 and num2, return the sum of the two integers.
-
-#### Example 1:
-Input: num1 = 12, num2 = 5
-Output: 17
-Explanation: num1 is 12, num2 is 5, and their sum is 12 + 5 = 17, so 17 is returned.
-
-#### Example 2:
-Input: num1 = -10, num2 = 4
-Output: -6
-Explanation: num1 + num2 = -6, so -6 is returned.
-
-## Constraints:
-```
--100 <= num1, num2 <= 100
-```
+    <details open>
+      <summary>Description</summary>
+        <Description />
+        <Examples />
+    </details> 
   </TabItem>
+
   <TabItem value="solution" label="解答">
    ## Solution
-```js title="JavaScript"
-/**
- * @param {number} num1
- * @param {number} num2
- * @return {number}
- */
-var sum = function (num1, num2) {
-  return num1 + num2;
-};
-```
-```ts title="TypeScript"
-function sum(num1: number, num2: number): number {
-  return num1 + num2;
-}
-```
-```python title="Python 3"
-class Solution:
-    def sum(self, num1: int, num2: int) -> int:
-        return num1 + num2
-```
+<Tabs>
+  <TabItem value="js" label="JavaScript" default>
+       <CodeBlock language="js">{SolutionJs}</CodeBlock>
+  </TabItem>
+  <TabItem value="ts" label="TypeScript">
+      <CodeBlock language="ts">{SolutionTs}</CodeBlock>
+  </TabItem>
+      <TabItem value="python" label="Python3">
+      <CodeBlock language="py">{SolutionPy}</CodeBlock>
   </TabItem>
 </Tabs>
 
+  </TabItem>
+</Tabs>
 
 ## 解題思路
-就...加起來！
-## 心得
-好愛這題，增加一點自信好耶 > <  
 
+就...加起來！
+
+## 心得
+
+好愛這題，增加一點自信好耶！

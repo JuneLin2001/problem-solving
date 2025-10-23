@@ -4,7 +4,7 @@
  * @return {boolean}
  */
 var canConstruct = function (ransomNote, magazine) {
-  let counter = {};
+  const counter = {};
 
   for (let i = 0; i < magazine.length; i++) {
     if (counter[magazine[i]]) {

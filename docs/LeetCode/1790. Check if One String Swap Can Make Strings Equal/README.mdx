@@ -1,76 +1,49 @@
 ---
 title: 1790. Check if One String Swap Can Make Strings Equal
 description: You are given two strings s1 and s2 of equal length. A string swap is an operation where you choose two indices in a string (not necessarily different) and swap the characters at these indices. Return true if it is possible to make both strings equal by performing at most one string swap on exactly one of the strings. Otherwise, return false.
-keywords: [LeetCode, 1790. Check if One String Swap Can Make Strings Equal, Easy,Hash Table,String,Counting]
+keywords:
+  [
+    LeetCode,
+    1790. Check if One String Swap Can Make Strings Equal,
+    Easy,
+    Hash Table,
+    String,
+    Counting,
+  ]
+tags: [LeetCode, Easy, Hash Table, String, Counting]
 ---
 
 # [{frontMatter.title}](https://leetcode.com/problems/check-if-one-string-swap-can-make-strings-equal)
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
 import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Solution from "!!raw-loader!./solution.js";
+import Description from "./_Description.md";
+import Examples from "./_Examples.md";
 
 <DifficultyBadge difficulty="Easy" />
 
 <Tabs>
   <TabItem value="description" label="題目描述" default>
-    ## Description
-
-You are given two strings s1 and s2 of equal length. A string swap is an operation where you choose two indices in a string (not necessarily different) and swap the characters at these indices.
-Return true if it is possible to make both strings equal by performing at most one string swap on exactly one of the strings. Otherwise, return false.
-
-#### Example 1:
-Input: s1 = "bank", s2 = "kanb"
-Output: true
-Explanation: For example, swap the first character with the last character of s2 to make "bank".
-
-#### Example 2:
-Input: s1 = "attack", s2 = "defend"
-Output: false
-Explanation: It is impossible to make them equal with one string swap.
-
-#### Example 3:
-Input: s1 = "kelb", s2 = "kelb"
-Output: true
-Explanation: The two strings are already equal, so no string swap operation is required.
-
-#### Constraints:
-```
-1 <= s1.length, s2.length <= 100
-s1.length == s2.length
-s1 and s2 consist of only lowercase English letters.
-```
-Follow up: Suppose there are lots of incoming s, say s1, s2, ..., sk where k >= 109, and you want to check one by one to see if t has its subsequence. In this scenario, how would you change your code?
+    <details open>
+      <summary>Description</summary>
+        <Description />
+        <Examples />
+    </details> 
   </TabItem>
+
   <TabItem value="solution" label="解答">
    ## Solution
-```js
-/**
- * @param {string} s1
- * @param {string} s2
- * @return {boolean}
- */
-var areAlmostEqual = function (s1, s2) {
-  const arr = [];
-
-  for (let i = 0; i < s1.length; i++) {
-    if (s1[i] !== s2[i]) {
-      arr.push(i);
-    }
-  }
-
-  if (arr.length === 2) {
-    return s1[arr[0]] === s2[arr[1]] && s1[arr[1]] === s2[arr[0]];
-  }
-
-  return arr.length === 0;
-};
-```
+    <CodeBlock language="js">{Solution}</CodeBlock>
   </TabItem>
 </Tabs>
 
-
 ## 解題思路
+
 因為兩個字串一樣長所以可以寫在同個 for 迴圈裡面，先是暴力遍歷陣列找出兩個字串的差異是在第 i 個位置並記錄到 arr，如果 arr 等於 2 的話就比較兩個字串的那兩個交換位置之後是不是相等，是的話就 true。還有個狀況是兩個字串一開始就一樣所以 arr 會是 0，這樣直接回傳 true 就好。arr 長度除了 2 和 0 以外就都是 false
+
 ## 心得
+
 原本想用 Set 的資料結構但發現一般的陣列 array 就夠了

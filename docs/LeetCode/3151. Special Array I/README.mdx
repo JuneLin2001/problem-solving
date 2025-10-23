@@ -1,83 +1,41 @@
 ---
 title: 3151. Special Array I
 description: You are given an array of integers nums. Return the length of the longest subarray of nums which is either strictly increasing or strictly decreasing .
-keywords: [LeetCode, 3151. Special Array I, Easy,Array]
+keywords: [LeetCode, 3151. Special Array I, Easy, Array]
+tags: [LeetCode, Easy, Array]
 ---
 
 # [{frontMatter.title}](https://leetcode.com/problems/special-array-i)
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
 import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Solution from "!!raw-loader!./solution.js";
+import Description from "./_Description.md";
+import Examples from "./_Examples.md";
 
 <DifficultyBadge difficulty="Easy" />
 
 <Tabs>
   <TabItem value="description" label="題目描述" default>
-    ## Description
-An array is considered special if every pair of its adjacent elements contains two numbers with different parity.
-
-You are given an array of integers nums. Return true if nums is a special array, otherwise, return false.
-
-
-
-#### Example 1:
-Input: nums = [1]
-Output: true
-Explanation:
-There is only one element. So the answer is true.
-
-#### Example 2:
-Input: nums = [2,1,4]
-Output: true
-Explanation:
-There is only two pairs: (2,1) and (1,4), and both of them contain numbers with different parity. So the answer is true.
-
-#### Example 3:
-Input: nums = [4,3,1,6]
-Output: false
-Explanation:
-nums[1] and nums[2] are both odd. So the answer is false.
-
-
-## Constraints:
-```
-- 1 <= nums.length <= 100
-- 1 <= nums[i] <= 100
-```
-
-## Constraints:
-```
-1 <= nums.length <= 50
-1 <= nums[i] <= 50
-```
-
+    <details open>
+      <summary>Description</summary>
+        <Description />
+        <Examples />
+    </details> 
   </TabItem>
+
   <TabItem value="solution" label="解答">
    ## Solution
-```js
-/**
- * @param {number[]} nums
- * @return {boolean}
- */
-var isArraySpecial = function (nums) {
-  if (nums.length === 1) {
-    return true;
-  }
-
-  for (i = 1; i < nums.length; i++) {
-    if (nums[i - 1] % 2 === nums[i] % 2) {
-      return false;
-    }
-  }
-  return true;
-};
-```
+    <CodeBlock language="js">{Solution}</CodeBlock>
   </TabItem>
 </Tabs>
 
 ## 解題思路
-想法是就直接暴力的遍歷 nums 陣列，相鄰的兩個數是否為一偶一奇，是的話直接return false，如果都不是的話那就return true！
+
+想法是就直接暴力的遍歷 nums 陣列，相鄰的兩個數是否為一偶一奇，是的話直接 return false，如果都不是的話那就 return true！
 
 ## 心得
-看到標easy然後好像看得懂題目耶就來試試看，耗時大概20分鐘左右就解出來了
+
+看到標 easy 然後好像看得懂題目耶就來試試看，耗時大概 20 分鐘左右就解出來了

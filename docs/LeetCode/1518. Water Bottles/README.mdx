@@ -1,107 +1,76 @@
 ---
 title: 1518. Water Bottles
 description: There are numBottles water bottles that are initially full of water. You can exchange numExchange empty water bottles from the market with one full water bottle.
-keywords: [LeetCode, 1518. Water Bottles, Easy,Math, Simulation]
+keywords: [LeetCode, 1518. Water Bottles, Easy, Math, Simulation]
+tags: [LeetCode, Easy, Math, Simulation]
 ---
 
 # [{frontMatter.title}](https://leetcode.com/problems/water-bottles)
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
 import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Solution from "!!raw-loader!./solution.js";
+import Description from "./_Description.md";
+import Examples from "./_Examples.md";
 
 <DifficultyBadge difficulty="Easy" />
 
 <Tabs>
   <TabItem value="description" label="題目描述" default>
-    ## Description
-
-There are `numBottles` water bottles that are initially full of water. You can exchange `numExchange` empty water bottles from the market with one full water bottle.  
-
-The operation of drinking a full water bottle turns it into an empty bottle.  
-
-Given the two integers `numBottles` and `numExchange`, return the maximum number of water bottles you can drink.
-
-#### Example 1:
-![](https://assets.leetcode.com/uploads/2020/07/01/sample_1_1875.png)
-> **Input:** numBottles = 9, numExchange = 3  
-**Output:** 13  
-**Explanation:** You can exchange 3 empty bottles to get 1 full water bottle.
-Number of water bottles you can drink: 9 + 3 + 1 = 13.
-
-#### Example 2:
-![](https://assets.leetcode.com/uploads/2020/07/01/sample_2_1875.png)
->**Input:** numBottles = 15, numExchange = 4  
-**Output:** 19  
-**Explanation:** You can exchange 4 empty bottles to get 1 full water bottle. 
-Number of water bottles you can drink: 15 + 3 + 1 = 19.
-
-#### Constraints:
- - `1 <= numBottles <= 100`
- - `2 <= numExchange <= 100`
-
+    <details open>
+      <summary>Description</summary>
+        <Description />
+        <Examples />
+    </details> 
   </TabItem>
+
   <TabItem value="solution" label="解答">
    ## Solution
-```js
-/**
- * @param {number} numBottles
- * @param {number} numExchange
- * @return {number}
- */
-var numWaterBottles = function (numBottles, numExchange) {
-  let result = 0;
-  let emptyBottles = 0;
-
-  while (numBottles > 0) {
-    result += numBottles;
-    emptyBottles += numBottles;
-    numBottles = Math.floor(emptyBottles / numExchange);
-    emptyBottles = emptyBottles % numExchange;
-  }
-
-  return result;
-};
-```
+    <CodeBlock language="js">{Solution}</CodeBlock>
   </TabItem>
 </Tabs>
 
-
 ## 解題思路
-題目要算出最多能喝到幾瓶水，兩個參數 `numBottles` 和 `numExchange`，代表一開始總共有 `numBottles` 瓶滿的水，且用 `numExchange` 個空瓶就可以換到一瓶滿的水。  
 
-我的做法是先定義兩個變數  
+題目要算出最多能喝到幾瓶水，兩個參數 `numBottles` 和 `numExchange`，代表一開始總共有 `numBottles` 瓶滿的水，且用 `numExchange` 個空瓶就可以換到一瓶滿的水。
+
+我的做法是先定義兩個變數
+
 ```js
-  let result = 0; //總共喝了幾瓶水
-  let emptyBottles = 0; //目前的空瓶數量
+let result = 0; //總共喝了幾瓶水
+let emptyBottles = 0; //目前的空瓶數量
 ```
 
 第一步是使用 while 迴圈，當還有水沒喝光的時候就重複執行程式
-```js
-  while (numBottles > 0) {
 
-  }
+```js
+while (numBottles > 0) {}
 ```
 
 迴圈中首先是先把所有滿的水喝光
+
 ```js
-    while (numBottles > 0) {
-    result += numBottles; //喝光一開始的 numBottles 瓶水，之後加進 result 中
-    emptyBottles += numBottles; //喝光一開始的 numBottles 瓶水，所以多了 numBottles 個空瓶
-  }
+while (numBottles > 0) {
+  result += numBottles; //喝光一開始的 numBottles 瓶水，之後加進 result 中
+  emptyBottles += numBottles; //喝光一開始的 numBottles 瓶水，所以多了 numBottles 個空瓶
+}
 ```
 
 之後加上使用空瓶換水的部分
+
 ```js
-  while (numBottles > 0) {
-    result += numBottles;
-    emptyBottles += numBottles;
-    numBottles = Math.floor(emptyBottles / numExchange); // 使用目前的空瓶換水
-    emptyBottles = emptyBottles % numExchange; // 算出換完剩下的空瓶總數
-  }
+while (numBottles > 0) {
+  result += numBottles;
+  emptyBottles += numBottles;
+  numBottles = Math.floor(emptyBottles / numExchange); // 使用目前的空瓶換水
+  emptyBottles = emptyBottles % numExchange; // 算出換完剩下的空瓶總數
+}
 ```
 
 最後當水喝完且空瓶不夠換水的時候就是答案了！
 
 ## 心得
-先把題目看一遍，先寫出 sudo code，之後嘗試把 sudo code 轉為真實程式碼。  
+
+先把題目看一遍，先寫出 sudo code，之後嘗試把 sudo code 轉為真實程式碼。

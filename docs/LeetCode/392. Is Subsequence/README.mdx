@@ -1,75 +1,49 @@
 ---
 title: 392. Is Subsequence
 description: Given two strings s and t, return true if s is a subsequence of t, or false otherwise.
-keywords: [LeetCode, 392. Is Subsequence, Easy,Two Pointers,String,Dynamic Programming]
+keywords:
+  [
+    LeetCode,
+    392. Is Subsequence,
+    Easy,
+    Two Pointers,
+    String,
+    Dynamic Programming,
+  ]
+tags: [LeetCode, Easy, Two Pointers, String, Dynamic Programming]
 ---
 
 # [{frontMatter.title}](https://leetcode.com/problems/intersection-of-two-arrays/)
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
 import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Solution from "!!raw-loader!./solution.js";
+import Description from "./_Description.md";
+import Examples from "./_Examples.md";
 
 <DifficultyBadge difficulty="Easy" />
 
 <Tabs>
   <TabItem value="description" label="題目描述" default>
-    ## Description
-    Given two strings s and t, return true if s is a subsequence of t, or false otherwise.
-
-A subsequence of a string is a new string that is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (i.e., "ace" is a subsequence of "abcde" while "aec" is not).
-
-
-#### Example 1:
-Input: s = "abc", t = "ahbgdc"
-Output: true
-
-#### Example 2:
-Input: s = "axc", t = "ahbgdc"
-Output: false
-
-
-## Constraints:
-```
-0 <= s.length <= 100
-0 <= t.length <= 104
-s and t consist only of lowercase English letters.
-```
-
-Follow up: Suppose there are lots of incoming s, say s1, s2, ..., sk where k >= 109, and you want to check one by one to see if t has its subsequence. In this scenario, how would you change your code?
+    <details open>
+      <summary>Description</summary>
+        <Description />
+        <Examples />
+    </details> 
   </TabItem>
+
   <TabItem value="solution" label="解答">
    ## Solution
-```js
-/**
- * @param {string} s
- * @param {string} t
- * @return {boolean}
- */
-var isSubsequence = function (s, t) {
-  let pointerS = 0;
-  let pointerT = 0;
-
-  if (s.length === 0) return true;
-
-  while (pointerT <= t.length) {
-    if (s[pointerS] === t[pointerT]) {
-      pointerS++;
-    }
-    if (pointerS >= s.length) {
-      return true;
-    }
-    pointerT++;
-  }
-  return false;
-};
-
-```
+    <CodeBlock language="js">{Solution}</CodeBlock>
   </TabItem>
 </Tabs>
 
-
 ## 解題思路
+
 先是定義兩個 Pointer，再用其判斷字串的是否為 Subsequence
+
 ## 心得
+
 看了 [Wilson Ren 的 資料結構與演算法 (JavaScript)](https://www.udemy.com/course/algorithm-data-structure) 介紹這題經典題，就馬上用 Two Pointer 做法來試試看

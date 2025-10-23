@@ -1,85 +1,53 @@
 ---
 title: 704. Binary Search
 description: Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums. If target exists, then return its index. Otherwise, return -1. You must write an algorithm with O(log n) runtime complexity.
-keywords: [LeetCode, 704. Binary Search, Easy,Array,Binary Search]
+keywords: [LeetCode, 704. Binary Search, Easy, Array, Binary Search]
+tags: [LeetCode, Easy, Array, Binary Search]
 ---
 
 # [{frontMatter.title}](https://leetcode.com/problems/binary-search/)
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
 import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import SolutionJs from "!!raw-loader!./solution.js";
+import SolutionTs from "!!raw-loader!./solution.ts";
+import Description from "./_Description.md";
+import Examples from "./_Examples.md";
 
 <DifficultyBadge difficulty="Easy" />
 
 <Tabs>
   <TabItem value="description" label="題目描述" default>
-    ## Description
-Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums. If target exists, then return its index. Otherwise, return -1.
-You must write an algorithm with O(log n) runtime complexity.
-
-
-#### Example 1:
-Input: nums = [-1,0,3,5,9,12], target = 9
-Output: 4
-Explanation: 9 exists in nums and its index is 4
-
-#### Example 2:
-Input: nums = [-1,0,3,5,9,12], target = 2
-Output: -1
-Explanation: 2 does not exist in nums so return -1
-
-
-## Constraints:
-```
-1 <= nums.length <= 104  
--104 < nums[i], target < 104  
-All the integers in nums are unique.  
-nums is sorted in ascending order.  
-```
-
+    <details open>
+      <summary>Description</summary>
+        <Description />
+        <Examples />
+    </details> 
   </TabItem>
+
   <TabItem value="solution" label="解答">
    ## Solution
-```js title="Linear Search"
-/**
- * @param {number[]} nums
- * @param {number} target
- * @return {number}
- */
-var search = function (nums, target) {
-  for (let i = 0; i < nums.length; i++) {
-    if (nums[i] === target) {
-      return i;
-    }
-  }
+<Tabs>
+  <TabItem value="js" label="JavaScript" default>
+       <CodeBlock language="js">{SolutionJs}</CodeBlock>
+  </TabItem>
+  <TabItem value="ts" label="TypeScript">
+      <CodeBlock language="ts">{SolutionTs}</CodeBlock>
+  </TabItem>
+</Tabs>
 
-  return -1;
-};
-```
-
-```ts title="Binary Search"
-function search(nums: number[], target: number): number {
-  let min = 0;
-  let max = nums.length - 1;
-
-  while (min <= max) {
-    let middle = Math.floor((max + min) / 2);
-    if (target > nums[middle]) {
-      min = middle + 1;
-    } else if (target < nums[middle]) {
-      max = middle - 1;
-    } else if (target === nums[middle]) {
-      return middle;
-    }
-  }
-  return -1;
-}
-```
   </TabItem>
 </Tabs>
 
 ## 解題思路
-來練習一下經典題，試了兩種解法分別別放在 js 和 ts ，js 是從頭開始暴力遍歷陣列的 Linear Search，ts則是效能較好的 Binary Search，而題目描述有提到 `You must write an algorithm with O(log n) runtime complexity.` ，所以正解會是 Binary Search 的作法。
+
+來練習一下經典題，試了兩種解法分別別放在 js 和 ts 。  
+js 是從頭開始暴力遍歷陣列的 Linear Search，ts 則是效能較好的 Binary Search。  
+而題目描述有提到 `You must write an algorithm with O(log n) runtime complexity.`  
+所以真正的正解會是 Binary Search 的作法。
+
 ## 心得
+
 看了 [Wilson Ren 的 資料結構與演算法 (JavaScript)](https://www.udemy.com/course/algorithm-data-structure) 就馬上來試一下練練手，好耶！

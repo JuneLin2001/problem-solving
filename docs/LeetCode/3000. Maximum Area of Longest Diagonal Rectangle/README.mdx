@@ -1,100 +1,61 @@
 ---
 title: 3000. Maximum Area of Longest Diagonal Rectangle
 description: You are given a 2D 0-indexed integer array dimensions.
-keywords: [LeetCode, 3000. Maximum Area of Longest Diagonal Rectangle,Easy,Array]
+keywords:
+  [LeetCode, 3000. Maximum Area of Longest Diagonal Rectangle, Easy, Array]
+tags: [LeetCode, Easy, Array]
 ---
 
 # [{frontMatter.title}](https://leetcode.com/problems/maximum-area-of-longest-diagonal-rectangle)
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
 import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Solution from "!!raw-loader!./solution.js";
+import Description from "./_Description.md";
+import Examples from "./_Examples.md";
 
 <DifficultyBadge difficulty="Easy" />
 
 <Tabs>
-<TabItem value="description" label="題目描述" default>
-  
-## Description
+  <TabItem value="description" label="題目描述" default>
+    <details open>
+      <summary>Description</summary>
+        <Description />
+        <Examples />
+    </details> 
+  </TabItem>
 
-You are given a 2D **0-indexed** integer array dimensions.
-
-For all indices `i`, `0 <= i < dimensions.length, dimensions[i][0]` represents the length and `dimensions[i][1]` represents the width of the rectangle `i`.
-
-Return the **area** of the rectangle having the **longest** diagonal. If there are multiple rectangles with the longest diagonal, return the area of the rectangle having the **maximum** area.
-
-#### Example 1:
-
->**Input:** dimensions = [[9,3],[8,6]]  
-**Output:** 48  
-**Explanation:**   
-For index = 0, length = 9 and width = 3. Diagonal length = sqrt(9 * 9 + 3 * 3) = sqrt(90) ≈ 9.487.  
-For index = 1, length = 8 and width = 6. Diagonal length = sqrt(8 * 8 + 6 * 6) = sqrt(100) = 10.  
-So, the rectangle at index 1 has a greater diagonal length therefore we return area = 8 * 6 = 48.
-
-#### Example 2:
-
->**Input:** dimensions = [[3,4],[4,3]]  
-**Output:** 12  
-**Explanation:** Length of diagonal is the same for both which is 5, so maximum area = 12.
-
-## Constraints:
-- `1 <= dimensions.length <= 100`
-- `dimensions[i].length == 2`
-- `1 <= dimensions[i][0], dimensions[i][1] <= 100`
-
-</TabItem>
-
-<TabItem value="solution" label="解答">
-
+  <TabItem value="solution" label="解答">
    ## Solution
-```js
-/**
- * @param {number[][]} dimensions
- * @return {number}
- */
-
-var areaOfMaxDiagonal = function (dimensions) {
-  let maxRectangleDiagonal = 0;
-  let maxRectangleArea = 0;
-
-  for (let i = 0; i < dimensions.length; i++) {
-    const length = dimensions[i][0];
-    const width = dimensions[i][1];
-    const diagonal = length * length + width * width;
-    if (diagonal > maxRectangleDiagonal) {
-      maxRectangleDiagonal = diagonal;
-      maxRectangleArea = length * width;
-    }
-    if (diagonal === maxRectangleDiagonal) {
-      maxRectangleArea = Math.max(length * width, maxRectangleArea);
-    }
-  }
-
-  return maxRectangleArea;
-};
-```
+    <CodeBlock language="js">{Solution}</CodeBlock>
   </TabItem>
 </Tabs>
 
 ## 解題思路
+
 題目描述提到 `dimensions[i][0]` 會是矩形的長，然後 `dimensions[i][1]` 則是矩形的寬，需要 return 對角線最長的矩形的面積。如果有多個對角線最長的矩形，則傳回面積最大的矩形的面積。而矩形對角線則可以透過畢氏定理算出。
 
 以題目給的 Example 1 `dimensions = [[9,3],[8,6]]` 為例子，
 
-第一個矩形長9寬3
- - 對角線 X：$9^2$ + $3^2$ = $X^2$ ， 所以 X = $\sqrt{90}$
- - 面積：9 * 3 = 27
+第一個矩形長 9 寬 3
 
-第二個矩形長8寬6
- - 對角線 X：$8^2$ + $6^2$ = $X^2$ ， 所以 X = $\sqrt{100}$
- - 面積：8 * 6 = 48
+- 對角線 X：$9^2$ + $3^2$ = $X^2$ ， 所以 X = $\sqrt{90}$
+- 面積：9 \* 3 = 27
+
+第二個矩形長 8 寬 6
+
+- 對角線 X：$8^2$ + $6^2$ = $X^2$ ， 所以 X = $\sqrt{100}$
+- 面積：8 \* 6 = 48
 
 因為 $\sqrt{100}$ > $\sqrt{90}$，所以要回傳的是第一個矩形的面積 `48`。
 
 把邏輯寫成程式就是答案了！需要注意的是可能不只兩組矩形，所以需要遍歷陣列。
 
 ## 心得
+
 順便學到了怎麼用 markdown 寫數學運算符號，好耶！
+
 - 平方 `$x^2$`：$x^2$
 - 根號 `$\sqrt{x}$`：$\sqrt{x}$

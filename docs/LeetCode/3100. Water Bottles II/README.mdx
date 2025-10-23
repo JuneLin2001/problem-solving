@@ -1,93 +1,54 @@
 ---
 title: 3100. Water Bottles II
 description: You are given two integers numBottles and numExchange. numBottles represents the number of full water bottles that you initially have. In one operation, you can perform one of the following operations
-keywords: [LeetCode, 3100. Water Bottles II, Medium ,Math, Simulation]
+keywords: [LeetCode, 3100. Water Bottles II, Medium, Math, Simulation]
+tags: [LeetCode, Medium, Math, Simulation]
 ---
 
 # [{frontMatter.title}](https://leetcode.com/problems/water-bottles-ii)
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
 import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Solution from "!!raw-loader!./solution.js";
+import Description from "./_Description.md";
+import Examples from "./_Examples.md";
 
 <DifficultyBadge difficulty="Medium" />
 
 <Tabs>
   <TabItem value="description" label="題目描述" default>
-    ## Description
-
-You are given two integers ``numBottles`` and ``numExchange``.  
-
-``numBottles`` represents the number of full water bottles that you initially have. In one operation, you can perform one of the following operations:  
-
-- Drink any number of full water bottles turning them into empty bottles.
-- Exchange ``numExchange`` empty bottles with one full water bottle. Then, increase ``numExchange`` by one.
-
-Note that you cannot exchange multiple batches of empty bottles for the same value of ``numExchange``. For example, if `numBottles == 3` and `numExchange == 1`, you cannot exchange `3` empty water bottles for `3` full bottles.
-
-Return the **maximum** number of water bottles you can drink.
-
-#### Example 1:
-![](https://assets.leetcode.com/uploads/2024/01/28/exampleone1.png)
-> **Input:** numBottles = 13, numExchange = 6  
-**Output:** 15  
-**Explanation:** The table above shows the number of full water bottles, empty water bottles, the value of numExchange, and the number of bottles drunk.
-
-#### Example 2:
-![](https://assets.leetcode.com/uploads/2024/01/28/example231.png)
->**Input:** numBottles = 10, numExchange = 3  
-**Output:** 13  
-**Explanation:** The table above shows the number of full water bottles, empty water bottles, the value of numExchange, and the number of bottles drunk.
-
-#### Constraints:
- - `1 <= numBottles <= 100`
- - `2 <= numExchange <= 100`
-
+    <details open>
+      <summary>Description</summary>
+        <Description />
+        <Examples />
+    </details> 
   </TabItem>
-<TabItem value="solution" label="解答">
+
+  <TabItem value="solution" label="解答">
    ## Solution
-```js
-/**
- * @param {number} numBottles
- * @param {number} numExchange
- * @return {number}
- */
-var maxBottlesDrunk = function (numBottles, numExchange) {
-  let bottlesDrunk = 0;
-  let emptyBottles = 0;
-
-  while (numBottles > 0) {
-    bottlesDrunk += numBottles;
-    emptyBottles += numBottles;
-    numBottles = 0;
-
-    while (emptyBottles >= numExchange) {
-      emptyBottles -= numExchange;
-      numExchange++;
-      numBottles++;
-    }
-  }
-
-  return bottlesDrunk;
-};
-```
+    <CodeBlock language="js">{Solution}</CodeBlock>
   </TabItem>
 </Tabs>
 
-
 ## 解題思路
+
 與 [1518. Water Bottles](../1518.%20Water%20Bottles/README.mdx) 大致相同，不同之處在於
- 1. 同一值的 numExchange 只能用於交換一次
- 2. 使用 numExchange 交換後，numExchange 要 +1
+
+1.  同一值的 numExchange 只能用於交換一次
+2.  使用 numExchange 交換後，numExchange 要 +1
 
 照此更新邏輯就是答案了。
+
 ```js
-    while (emptyBottles >= numExchange) { 
-      emptyBottles -= numExchange;
-      numExchange++;
-      numBottles++; //  同一值的 numExchange 只能用於交換一次，所以是++
-    }
+while (emptyBottles >= numExchange) {
+  emptyBottles -= numExchange;
+  numExchange++;
+  numBottles++; //  同一值的 numExchange 只能用於交換一次，所以是++
+}
 ```
 
 ## 心得
+
 先完成上題再做這題的話會簡單不少，用 [1518. Water Bottles](../1518.%20Water%20Bottles/README.mdx) 改一下就是答案了。
