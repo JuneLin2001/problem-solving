@@ -1,0 +1,73 @@
+---
+title: 1716. Calculate Money in Leetcode Bank
+description: Given an array nums, return true if the array was originally sorted in non-decreasing order, then rotated some number of positions (including zero). Otherwise, return false.
+keywords: [LeetCode, 1716. Calculate Money in Leetcode Bank, Easy, Math]
+tags: [LeetCode, Easy, Math]
+---
+
+# [{frontMatter.title}](https://leetcode.com/problems/calculate-money-in-leetcode-bank/)
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Solution from "!!raw-loader!./solution.js";
+import Description from "./_Description.md";
+import Examples from "./_Examples.md";
+
+<DifficultyBadge difficulty="Easy" />
+
+<Tabs>
+  <TabItem value="description" label="題目描述" default>
+    <details open>
+      <summary>Description</summary>
+        <Description />
+        <Examples />
+    </details> 
+  </TabItem>
+
+  <TabItem value="solution" label="解答">
+   ## Solution
+    <CodeBlock language="js">{Solution}</CodeBlock>
+  </TabItem>
+</Tabs>
+
+## 解題思路
+
+先算出目前天數等於幾週又幾天
+
+```js
+const totalWeeks = Math.floor(n / 7); // 總週數
+const days = n % 7; // 其餘天數
+```
+
+再用等差數列公式算出題目要求的結果
+
+> 等差數列的和 = (首項 + 末項) \* 項數 / 2
+
+所以假設有 `totalWeeks` 週  
+首項會是 `1 + 2 + 3 + 4 + 5 + 6 + 7` = `28`  
+末項會是 `28 + 7 * (totalWeeks - 1)`
+
+> -1 是因為第一週不變是 28  
+> 第二週 = 28 + 7 \* (2 - 1) = 35  
+> 第三週 28 + 7 \* (3 - 1) = 42  
+> 以此類推
+
+項數就是 `totalWeeks`  
+套用公式就會變成 `((28 + (28 + 7 * (totalWeeks - 1))))* totalWeeks / 2`
+
+```js
+let result = ((28 + (28 + 7 * (totalWeeks - 1))) * totalWeeks) / 2;
+```
+
+算完週的部分再把其餘天數算出來並加起來，就是答案了
+
+```js
+result += (days * (days + 1)) / 2 + days * totalWeeks;
+return result;
+```
+
+## 心得
+
+酷酷數學
