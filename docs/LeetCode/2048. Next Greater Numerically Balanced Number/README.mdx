@@ -1,0 +1,61 @@
+---
+title: 2048. Next Greater Numerically Balanced Number
+description: An integer x is numerically balanced if for every digit d in the number x, there are exactly d occurrences of that digit in x. Given an integer n, return the smallest numerically balanced number strictly greater than n.
+keywords:
+  [
+    LeetCode,
+    2048. Next Greater Numerically Balanced Number,
+    Medium,
+    Hash Table,
+    Math,
+    Backtracking,
+    Counting,
+    Enumeration,
+  ]
+tags: [LeetCode, Medium, Hash Table, Math, Backtracking, Counting, Enumeration]
+---
+
+# [{frontMatter.title}](https://leetcode.com/problems/next-greater-numerically-balanced-number/)
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Solution from "!!raw-loader!./solution.js";
+import Description from "./_Description.md";
+import Examples from "./_Examples.md";
+
+<DifficultyBadge difficulty="Medium" />
+
+<Tabs>
+  <TabItem value="description" label="題目描述" default>
+    <details open>
+      <summary>Description</summary>
+        <Description />
+        <Examples />
+    </details> 
+  </TabItem>
+
+  <TabItem value="solution" label="解答">
+   ## Solution
+    <CodeBlock language="js">{Solution}</CodeBlock>
+  </TabItem>
+</Tabs>
+
+## 解題思路
+
+Discussion 有個人貼了所有的 ["beautiful" numbers 的清單](https://leetcode.com/problems/next-greater-numerically-balanced-number/description/comments/3211016/)  
+所以就用 for 迴圈找出最小且符合條件的數  
+對
+
+```js
+for (let i of beautifulNumbers) {
+  if (i > n) {
+    return i;
+  }
+}
+```
+
+## 心得
+
+![](https://media1.tenor.com/m/N_bXE4MWdEMAAAAd/big-brain-markiplier.gif)
