@@ -26,7 +26,8 @@ import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import CodeBlock from "@theme/CodeBlock";
 import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
-import Solution from "!!raw-loader!./solution.js";
+import SolutionJs from "!!raw-loader!./solution.js";
+import SolutionTs from "!!raw-loader!./solution.ts";
 import Description from "./_Description.md";
 import Examples from "./_Examples.md";
 
@@ -43,7 +44,15 @@ import Examples from "./_Examples.md";
 
   <TabItem value="solution" label="解答">
    ## Solution
-    <CodeBlock language="js">{Solution}</CodeBlock>
+<Tabs>
+  <TabItem value="js" label="JavaScript" default>
+       <CodeBlock language="js">{SolutionJs}</CodeBlock>
+  </TabItem>
+  <TabItem value="ts" label="TypeScript">
+      <CodeBlock language="ts">{SolutionTs}</CodeBlock>
+  </TabItem>
+</Tabs>
+
   </TabItem>
 </Tabs>
 
@@ -101,4 +110,23 @@ Bank.prototype.withdraw = function (account, money) {
 
 ## 心得
 
-酷酷物件導向
+酷酷物件導向  
+一開始使用 `!this.balance[account - 1]`，來判斷帳戶是否存在  
+但這樣子要是帳戶餘額是 `0`，`!0` 會變成 `true`，導致錯誤判斷為帳戶不存在  
+後來改成使用 `if (account > this.n)` 解決此問題。
+
+而因為物件導向很適合用來練習 TypeScript  
+所以也另外寫了 TS 版本的解答。  
+跟 JS 的邏輯是一樣的，只是變為使用 class 來實作，以及在初始化時候包含 `balance` 和 `n` 的型別來避免 IDE 報錯
+
+```ts
+class Bank {
+  public balance: number[];
+  public n: number;
+
+  constructor(balance: number[]) {
+    this.balance = balance;
+    this.n = balance.length;
+  }
+}
+```
