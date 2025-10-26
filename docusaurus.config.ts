@@ -79,15 +79,9 @@ const config: Config = {
       darkTheme: prismThemes.dracula,
     },
     algolia: {
-      // The application ID provided by Algolia
-      appId: "VXYM32HFNE",
-
-      // Public API key: it is safe to commit it
-      apiKey: "bb55a32cb847fa5d50e6bc588cb55699",
-
-      indexName: "problem-solving",
-
-      //... other Algolia params
+      appId: process.env.APPLICATION_ID,
+      apiKey: process.env.API_KEY,
+      indexName: "docusaurus-search",
     },
   } satisfies Preset.ThemeConfig,
 };
