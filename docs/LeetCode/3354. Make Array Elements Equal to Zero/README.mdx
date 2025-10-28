@@ -1,0 +1,92 @@
+---
+title: 3354. Make Array Elements Equal to Zero
+description: You are given an integer array nums. Start by selecting a starting position curr such that nums[curr] == 0, and choose a movement direction of either left or right.
+keywords:
+  [
+    LeetCode,
+    3354. Make Array Elements Equal to Zero,
+    Easy,
+    Array,
+    Simulation,
+    Prefix Sum,
+  ]
+tags: [LeetCode, Easy, Array, Simulation, Prefix Sum]
+---
+
+# [{frontMatter.title}](https://leetcode.com/problems/make-array-elements-equal-to-zero/)
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Solution from "!!raw-loader!./solution.js";
+import Description from "./_Description.md";
+import Examples from "./_Examples.md";
+
+<DifficultyBadge difficulty="Easy" />
+
+<Tabs>
+  <TabItem value="description" label="題目描述" default>
+    <details open>
+      <summary>Description</summary>
+        <Description />
+        <Examples />
+    </details> 
+  </TabItem>
+
+  <TabItem value="solution" label="解答">
+   ## Solution
+    <CodeBlock language="js">{Solution}</CodeBlock>
+  </TabItem>
+</Tabs>
+
+### 解題思路
+
+不懂題目在講啥所以先點開 Discussion 看一下  
+發現有人貼了這張圖  
+![](https://assets.leetcode.com/users/images/918b572a-9773-4747-8c71-9e9f6945372c_1761508886.660334.webp)  
+瞬間變得超好懂！
+
+再回來看題目  
+題目需要找到 `curr`，並讓 `nums[curr] == 0`  
+最後回傳符合需求的 `curr` 數量  
+
+所以在程式裡面可以先定義 `result` 來記錄符合需求的 `curr` 數量  
+再使用 for 迴圈來遍歷 `nums`，當不是 `0` 的時候就跳過這次迭代
+
+```js
+var countValidSelections = function (nums) {
+  let result = 0;
+
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] !== 0) continue;
+    // TODO
+  }
+
+  return result;
+};
+```
+
+根據那張圖可以想成要找的其實就是以下三種狀況：
+
+1.  左右兩邊總和相同
+    - 代表不管起始方向是左或右都可以，方塊會被剛好消除光，所以 `result += 2`
+2.  左邊總和比右邊總和大 `1`
+    - 代表起始方向是左時，方塊會被剛好消除光，但起始方向是右則不行，所以 `result += 1`
+3.  左邊總和比右邊總和小 `1`
+    - 代表起始方向是右時，方塊會被剛好消除光，但起始方向是左則不行，所以 `result += 1`
+
+再轉換成程式碼，透過 `sumLeft`、`sumRight` 算出左右總和，並篩選出三種狀況與對應的結果
+
+```js
+const sumLeft = nums.slice(0, i).reduce((acc, cur) => acc + cur, 0);
+const sumRight = nums.slice(i).reduce((acc, cur) => acc + cur, 0);
+
+if (sumLeft === sumRight) result += 2;
+if (sumLeft === sumRight - 1) result += 1;
+if (sumLeft === sumRight + 1) result += 1;
+```
+
+### 心得
+
+做圖人...我的超人...
