@@ -79,8 +79,8 @@ const config: Config = {
       darkTheme: prismThemes.dracula,
     },
     algolia: {
-      appId: process.env.APPLICATION_ID,
-      apiKey: process.env.API_KEY,
+      appId: "FYESTQ14AP",
+      apiKey: "1b534fa27d36e7fcc9521078c8438240",
       indexName: "docusaurus-search",
     },
   } satisfies Preset.ThemeConfig,
