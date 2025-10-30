@@ -1,0 +1,82 @@
+---
+title: 3370. Smallest Number With All Set Bits
+description: You are given a positive number n. Return the smallest number x greater than or equal to n, such that the binary representation of x contains only set bits
+keywords:
+  [
+    LeetCode,
+    3370. Smallest Number With All Set Bits,
+    Easy,
+    Math,
+    Bit Manipulation,
+  ]
+tags: [LeetCode, Easy, Math, Bit Manipulation]
+---
+
+# [{frontMatter.title}](https://leetcode.com/problems/smallest-number-with-all-set-bits/)
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Solution from "!!raw-loader!./solution.js";
+import Description from "./_Description.md";
+import Examples from "./_Examples.md";
+
+<DifficultyBadge difficulty="Easy" />
+
+<Tabs>
+  <TabItem value="description" label="題目描述" default>
+    <details open>
+      <summary>Description</summary>
+        <Description />
+        <Examples />
+    </details> 
+  </TabItem>
+
+  <TabItem value="solution" label="解答">
+   ## Solution
+    <CodeBlock language="js">{Solution}</CodeBlock>
+  </TabItem>
+</Tabs>
+
+## 解題思路
+
+要找的是大於等於 `n` 的且全由 `set bits` 組成的數字
+
+`set bits` 指的是在二進位表示法中的 `1`  
+而題目的範圍很小，為 `1 <= n <= 1000`  
+所以其實可以簡單列出所有小於等於 `1000` 且轉成二進位的全都由 `1` 組成的數字：
+
+- 十進位的 `1` 轉成二進位是 `1`
+- 十進位的 `3` 轉成二進位是 `11`
+- 十進位的 `7` 轉成二進位是 `111`
+- 十進位的 `15` 轉成二進位是 `1111`
+- 十進位的 `31` 轉成二進位是 `11111`
+- 十進位的 `63` 轉成二進位是 `111111`
+- 十進位的 `127` 轉成二進位是 `1111111`
+- 十進位的 `255` 轉成二進位是 `11111111`
+- 十進位的 `511` 轉成二進位是 `111111111`
+
+再大則是十進位的 `1023` 轉成二進位是 `1111111111`
+
+所以程式可以寫成這樣，不管傳入 $1 \leq n \leq 1000$ 的任何一個數字都能判斷
+
+```js
+var smallestNumber = function (n) {
+  if (n > 511) return 1023; // 512 ~ 1000
+  if (n > 255) return 511; // 256 ~ 511
+  if (n > 127) return 255; // 128 ~ 255
+  if (n > 63) return 127; // 64 ~ 127
+  if (n > 31) return 63; // 32 ~ 63
+  if (n > 15) return 31; // 16 ~ 31
+  if (n > 7) return 15; // 8 ~ 15
+  if (n > 3) return 7; // 4 ~ 7
+  if (n > 1) return 3; // 2 ~ 3
+
+  return 1; // 1
+};
+```
+
+## 心得
+
+酷酷的有點鑽漏洞
