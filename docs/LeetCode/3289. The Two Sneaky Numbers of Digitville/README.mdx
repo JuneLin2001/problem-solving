@@ -1,0 +1,69 @@
+---
+title: 3289. The Two Sneaky Numbers of Digitville
+description: In the town of Digitville, there was a list of numbers called nums containing integers from 0 to n - 1. Each number was supposed to appear exactly once in the list, however, two mischievous numbers sneaked in an additional time, making the list longer than usual. As the town detective, your task is to find these two sneaky numbers. Return an array of size two containing the two numbers (in any order), so peace can return to Digitville.
+keywords:
+  [
+    LeetCode,
+    3289. The Two Sneaky Numbers of Digitville,
+    Easy,
+    Array,
+    Hash Table,
+    Math,
+  ]
+tags: [LeetCode, Easy, Array, Hash Table, Math]
+---
+
+# [{frontMatter.title}](https://leetcode.com/problems/special-array-i)
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Solution from "!!raw-loader!./solution.js";
+import Description from "./_Description.md";
+import Examples from "./_Examples.md";
+
+<DifficultyBadge difficulty="Easy" />
+
+<Tabs>
+  <TabItem value="description" label="題目描述" default>
+    <details open>
+      <summary>Description</summary>
+        <Description />
+        <Examples />
+    </details> 
+  </TabItem>
+
+  <TabItem value="solution" label="解答">
+   ## Solution
+    <CodeBlock language="js">{Solution}</CodeBlock>
+  </TabItem>
+</Tabs>
+
+## 解題思路
+
+想法是使用 counter 來記錄數字出現的數量
+
+```js
+for (let i = 0; i < nums.length; i++) {
+  if (counter[nums[i]]) {
+    counter[nums[i]]++;
+  } else {
+    counter[nums[i]] = 1;
+  }
+}
+```
+
+遍歷一遍陣列後再次遍歷 `counter`，若出現兩次則記錄起來，最後回傳答案。
+
+```js
+for (let key in counter) {
+  if (counter[key] === 2) {
+    result.push(parseInt(key));
+  }
+}
+```
+
+## 心得
+
+我的答案好像滿冗長的，不知是否可以簡化。
