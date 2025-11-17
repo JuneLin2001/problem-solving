@@ -1,0 +1,47 @@
+---
+title: 1437. Check If All 1's Are at Least Length K Places Away
+description: Given an binary array nums and an integer k, return true if all 1's are at least k places away from each other, otherwise return false.
+keywords:
+  [
+    LeetCode,
+    1437. Check If All 1's Are at Least Length K Places Away,
+    Easy,
+    Array,
+  ]
+tags: [LeetCode, Easy, Array]
+---
+
+# [{frontMatter.title}](https://leetcode.com/problems/check-if-all-1s-are-at-least-length-k-places-away)
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Solution from "!!raw-loader!./solution.js";
+import Description from "./_Description.md";
+import Examples from "./_Examples.md";
+
+<DifficultyBadge difficulty="Easy" />
+
+<Tabs>
+  <TabItem value="description" label="題目描述" default>
+    <details open>
+      <summary>Description</summary>
+        <Description />
+        <Examples />
+    </details> 
+  </TabItem>
+
+  <TabItem value="solution" label="解答">
+   ## Solution
+    <CodeBlock language="js">{Solution}</CodeBlock>
+  </TabItem>
+</Tabs>
+
+### 解題思路
+
+把題目描述轉成 JS 程式碼，先是遍歷迴圈，當遇到該格是 `1` 的時候就檢查往前 k 格之內有沒有其他的 `1`，若有則 `false`，若遍歷完一遍後皆沒有則 `true`。
+
+### 心得
+
+我的解法用了兩個 for 迴圈，時間複雜度變成 O($n^2$) 不太好，應該可以再簡化
