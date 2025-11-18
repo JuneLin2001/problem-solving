@@ -1,0 +1,61 @@
+---
+title: 717. 1-bit and 2-bit Characters
+description: We have two special characters:The first character can be represented by one bit 0. The second character can be represented by two bits (10 or 11). Given a binary array bits that ends with 0, return true if the last character must be a one-bit character.
+keywords: [LeetCode, 717. 1-bit and 2-bit Characters, Easy, Array]
+tags: [LeetCode, Easy, Array]
+---
+
+# [{frontMatter.title}](https://leetcode.com/problems/1-bit-and-2-bit-characters/)
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Solution from "!!raw-loader!./solution.js";
+import Description from "./_Description.md";
+import Examples from "./_Examples.md";
+
+<DifficultyBadge difficulty="Easy" />
+
+<Tabs>
+  <TabItem value="description" label="題目描述" default>
+    <details open>
+      <summary>Description</summary>
+        <Description />
+        <Examples />
+    </details> 
+  </TabItem>
+
+  <TabItem value="solution" label="解答">
+   ## Solution
+    <CodeBlock language="js">{Solution}</CodeBlock>
+  </TabItem>
+</Tabs>
+
+## 解題思路
+
+題目給一組只由 `0` 和 `1` 所組成的陣列，要判斷最後一位的 `0` 是否是單獨存在，而不是接續前面的 `[1,0]` 這樣的組合  
+最後一位一定會是 `0`，所以只需要到 `bits.length - 1` 就行  
+因為 return 時候會用到 `i` 來判斷結果，故不使用 for 選擇使用 while 迴圈來遍歷陣列
+
+```js
+var isOneBitCharacter = function (bits) {
+  let i = 0;
+  while (i < bits.length - 1) {
+    if (bits[i] === 0) {
+      // 當前是 0 的話判斷下一個
+      i++;
+    } else {
+      // 不是 0 就代表當前是 1 ，且 1 一定會組成 [1,0] 或 [1,1]，所以 += 2
+      i += 2;
+    }
+  }
+
+  return i === bits.length - 1;
+  // 如果 i === bits.length - 1 的話就代表只剩下一個 0 ，反之則否
+};
+```
+
+## 心得
+
+題目描述超不直觀，花了一點時間才看懂
