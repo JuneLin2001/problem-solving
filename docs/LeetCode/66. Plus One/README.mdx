@@ -1,0 +1,79 @@
+---
+title: 66. Plus One
+description: You are given a large integer represented as an integer array digits, where each digits[i] is the ith digit of the integer. The digits are ordered from most significant to least significant in left-to-right order. The large integer does not contain any leading 0's. Increment the large integer by one and return the resulting array of digits.
+keywords: [LeetCode, 66. Plus One, Easy, Array, Math]
+tags: [LeetCode, Easy, Array, Math]
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Solution from "!!raw-loader!./solution.js";
+import Description from "./_Description.md";
+import Examples from "./_Examples.md";
+
+# [{frontMatter.title}](https://leetcode.com/problems/plus-one/)
+
+<DifficultyBadge difficulty="Easy" />
+
+<Tabs>
+  <TabItem value="description" label="題目描述" default>
+    <details open>
+      <summary>Description</summary>
+        <Description />
+        <Examples />
+    </details> 
+  </TabItem>
+
+  <TabItem value="solution" label="解答">
+   ## Solution
+    <CodeBlock language="js">{Solution}</CodeBlock>
+  </TabItem>
+</Tabs>
+
+## 解題思路
+
+[討論區有個好心人留了這段](https://leetcode.com/problems/plus-one/description/comments/1945414/)
+
+```
+Guys!! Try solving the problem using 3 cases.
+a) Considering all the values are 9.
+b) Considering the last digit is not 9.
+c) Considering the last digit is 9.
+This will make the coding a bit easy for you
+```
+
+所以這題可以簡化為以下三種狀況
+
+1. 最後一個數字是 9
+2. 最後一個數字不是 9
+3. 所有數字都是 9
+
+如果最後一個數字是 9 的話，就要把這個數字設為 0，並且把下一個數字加一。  
+如果最後一個數字不是 9 的話，那就直接把最後一個數字加一就好。  
+而有可能會有連續都是 9 的情況，所以要用 for 迴圈來處理。
+
+轉換為程式碼就會如下所示
+
+```js
+var plusOne = function (digits) {
+  for (let i = digits.length - 1; i >= 0; i--) {
+    // 從最尾端開始
+    if (digits[i] === 9) {
+      // 如果是 9 的話
+      digits[i] = 0; // 就把這個數字設為 0，接著進到下一個 for 迴圈的下個階段
+    } else {
+      digits[i] += 1; // 如果不是 9 的話，就把這個數字加一
+      return digits; // 然後直接跳出迴圈回傳結果
+    }
+  }
+
+  digits.unshift(1); // 運行到這裡就表示 for 迴圈跑完，代表所有數字都是 9 ，要在最前面補上 1
+  return digits;
+};
+```
+
+## 心得
+
+2026 年的第一題 LeetCode 每日挑戰，新年新哩扣！
