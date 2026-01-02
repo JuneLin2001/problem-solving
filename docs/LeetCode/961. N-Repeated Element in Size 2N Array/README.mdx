@@ -1,0 +1,42 @@
+---
+title: 961. N-Repeated Element in Size 2N Array
+description: You are given an integer array nums with the following properties:nums.length == 2 * n. nums contains n + 1 unique elements. Exactly one element of nums is repeated n times. Return the element that is repeated n times.
+keywords:
+  [LeetCode, 961. N-Repeated Element in Size 2N Array, Easy, Array, Hash Table]
+tags: [LeetCode, Easy, Array, Hash Table]
+---
+
+# [{frontMatter.title}](https://leetcode.com/problems/n-repeated-element-in-size-2n-array/)
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Solution from "!!raw-loader!./solution.js";
+import Description from "./_Description.md";
+import Examples from "./_Examples.md";
+
+<DifficultyBadge difficulty="Easy" />
+
+<Tabs>
+  <TabItem value="description" label="題目描述" default>
+    <details open>
+      <summary>Description</summary>
+        <Description />
+        <Examples />
+    </details> 
+  </TabItem>
+
+  <TabItem value="solution" label="解答">
+   ## Solution
+    <CodeBlock language="js">{Solution}</CodeBlock>
+  </TabItem>
+</Tabs>
+
+### 解題思路
+
+根據題目描述只會有一個 element 重複，所以先用一個 counter 紀錄出現的數字，當出現重複就直接 return
+
+### 心得
+
+直接把直覺轉成 JS 程式碼竟然一次過耶! 謝謝哩扣 🥳
