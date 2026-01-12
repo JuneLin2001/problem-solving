@@ -1,0 +1,64 @@
+---
+title: 1266. Minimum Time Visiting All Points
+description: On a 2D plane, there are n points with integer coordinates points[i] = [xi, yi]. Return the minimum time in seconds to visit all the points in the order given by points.
+keywords:
+  [
+    LeetCode,
+    1266. Minimum Time Visiting All Points,
+    Easy,
+    Array,
+    Math,
+    Geometry,
+  ]
+tags: [LeetCode, Easy, Array, Math, Geometry]
+---
+
+# [{frontMatter.title}](https://leetcode.com/problems/minimum-time-visiting-all-points/)
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Solution from "!!raw-loader!./solution.js";
+import Description from "./_Description.md";
+import Examples from "./_Examples.md";
+
+<DifficultyBadge difficulty="Easy" />
+
+<Tabs>
+  <TabItem value="description" label="題目描述" default>
+    <details open>
+      <summary>Description</summary>
+        <Description />
+        <Examples />
+    </details> 
+  </TabItem>
+
+  <TabItem value="solution" label="解答">
+   ## Solution
+    <CodeBlock language="js">{Solution}</CodeBlock>
+  </TabItem>
+</Tabs>
+
+### 解題思路
+
+根據題目的描述，移動方式只有
+
+1. 水平移動
+2. 垂直移動
+3. 斜走
+
+而斜走可以一次移動 X 和 Y，故以斜走為優先，當不行斜走時候才水平或垂直移動。
+
+關鍵在此處
+
+```js
+const distanceX = Math.abs(currentX - targetX);
+const distanceY = Math.abs(currentY - targetY);
+
+result += Math.max(distanceX, distanceY); // 比較 X 和 Y 各自的移動哪個會花比較多步，先斜走走完共通部分再走完剩下的部分
+```
+
+### 心得
+
+題目看起來有點拗，但把 `目前 X 座標`、`目前 Y 座標`、`目標 X 座標`、`目標 Y 座標` 各自先定義好後，語意就清晰多了!
