@@ -1,0 +1,51 @@
+---
+title: 1877. Minimize Maximum Pair Sum in Array
+description: he pair sum of a pair (a,b) is equal to a + b. The maximum pair sum is the largest pair sum in a list of pairs. For example, if we have pairs (1,5), (2,3), and (4,4), the maximum pair sum would be max(1+5, 2+3, 4+4) = max(6, 5, 8) = 8. Given an array nums of even length n, pair up the elements of nums into n / 2 pairs such that:Each element of nums is in exactly one pair, and The maximum pair sum is minimized. Return the minimized maximum pair sum after optimally pairing up the elements.
+keywords: [LeetCode, 1877. Minimize Maximum Pair Sum in Array, Medium, Math]
+tags: [
+    LeetCode,
+    Medium,
+    Array
+    Two Pointers
+    Greedy
+    Sorting,
+  ]
+---
+
+# [{frontMatter.title}](https://leetcode.com/problems/minimize-maximum-pair-sum-in-array/)
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Solution from "!!raw-loader!./solution.js";
+import Description from "./_Description.md";
+import Examples from "./_Examples.md";
+
+<DifficultyBadge difficulty="Medium" />
+
+<Tabs>
+  <TabItem value="description" label="題目描述" default>
+    <details open>
+      <summary>Description</summary>
+        <Description />
+        <Examples />
+    </details> 
+  </TabItem>
+
+  <TabItem value="solution" label="解答">
+   ## Solution
+    <CodeBlock language="js">{Solution}</CodeBlock>
+  </TabItem>
+</Tabs>
+
+## 解題思路
+
+根據這題的 `Hint 1：Would sorting help find the optimal order?` 以及題目的 Topics 裡面包含 `Greedy` 以及 `Two Pointers`，得知解題策略為先把 `nums` 升冪排序，再使用貪婪演算法逐步檢視每次最大和最小值的 `Pair Sum`，而要找最大和最小則使用 `Two Pointers` 的做法。
+
+因為 `nums.length` 一定會是偶數所以也不用考慮奇數狀況。  
+每次算完 `Pair Sum` 後就更新目前的 `maxPairSum`，當 `two pointer` 結束後就是結果了
+
+## 心得
+
+讀懂題目比解題還難
