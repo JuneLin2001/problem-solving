@@ -1,0 +1,69 @@
+---
+title: 1984. Minimum Difference Between Highest and Lowest of K Scores
+description: You are given a 0-indexed integer array nums, where nums[i] represents the score of the ith student. You are also given an integer k. Pick the scores of any k students from the array so that the difference between the highest and the lowest of the k scores is minimized. Return the minimum possible difference.
+keywords:
+  [
+    LeetCode,
+    1984. Minimum Difference Between Highest and Lowest of K Scores,
+    Easy,
+    Array,
+    Sliding Window,
+    Sorting,
+  ]
+tags: [LeetCode, Easy, Array, Sliding Window, Sorting]
+---
+
+# [{frontMatter.title}](https://leetcode.com/problems/minimum-difference-between-highest-and-lowest-of-k-scores/)
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Solution from "!!raw-loader!./solution.js";
+import Description from "./_Description.md";
+import Examples from "./_Examples.md";
+
+<DifficultyBadge difficulty="Easy" />
+
+<Tabs>
+  <TabItem value="description" label="題目描述" default>
+    <details open>
+      <summary>Description</summary>
+        <Description />
+        <Examples />
+    </details> 
+  </TabItem>
+
+  <TabItem value="solution" label="解答">
+   ## Solution
+    <CodeBlock language="js">{Solution}</CodeBlock>
+  </TabItem>
+</Tabs>
+
+## 解題思路
+
+根據題目的 `hints` 與 `topics` 得知要將題目給的 `nums` 排序後，使用 `Sliding Window` 的方式來解題，而 `Sliding Window` 的大小是由 `k` 來決定的。
+
+```js
+var minimumDifference = function (nums, k) {
+  nums.sort((a, b) => b - a); // 由大排到小，這樣子 left 就會大於 right
+
+  let left = 0;
+  let right = k - 1;
+  let minimumDifference = Infinity; // 因為是找minimum所以初始值無限大
+
+  while (right < nums.length) {
+    // 當 sliding window 還沒結束時後就持續算 difference，並每次更新 minimumDifference
+    const difference = nums[left] - nums[right];
+    minimumDifference = Math.min(minimumDifference, difference);
+    left++;
+    right++; // 算完之後 sliding window 往右移動
+  }
+
+  return minimumDifference; // while迴圈結束後回傳結果
+};
+```
+
+## 心得
+
+一開始覺得看不太懂題目但竟然一次就過ㄌ耶！
