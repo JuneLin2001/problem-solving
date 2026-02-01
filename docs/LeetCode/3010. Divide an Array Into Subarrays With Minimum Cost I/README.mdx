@@ -1,0 +1,51 @@
+---
+title: 3010. Divide an Array Into Subarrays With Minimum Cost I
+description: You are given an array of integers nums of length n. The cost of an array is the value of its first element. For example, the cost of [1,2,3] is 1 while the cost of [3,4,1] is 3. You need to divide nums into 3 disjoint contiguous subarrays. Return the minimum possible sum of the cost of these subarrays.
+keywords:
+  [
+    LeetCode,
+    3010. Divide an Array Into Subarrays With Minimum Cost I,
+    Easy,
+    Array,
+    Sorting,
+    Enumeration,
+  ]
+tags: [LeetCode, Easy, Array, Sorting, Enumeration]
+---
+
+# [{frontMatter.title}](https://leetcode.com/problems/divide-an-array-into-subarrays-with-minimum-cost-i/)
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Solution from "!!raw-loader!./solution.js";
+import Description from "./_Description.md";
+import Examples from "./_Examples.md";
+
+<DifficultyBadge difficulty="Easy" />
+
+<Tabs>
+  <TabItem value="description" label="題目描述" default>
+    <details open>
+      <summary>Description</summary>
+        <Description />
+        <Examples />
+    </details> 
+  </TabItem>
+
+  <TabItem value="solution" label="解答">
+   ## Solution
+    <CodeBlock language="js">{Solution}</CodeBlock>
+  </TabItem>
+</Tabs>
+
+## 解題思路
+
+因為 nums 的第一個項目一定會包含在最終答案之中，所以第一步就是先加上 `nums[0]`  
+接著移除 `nums[0]` 後，再對剩下來的進行排序  
+排序後把最小和第二小再加進 `result` 就是答案了！
+
+## 心得
+
+好像有點鑽漏洞的解法
