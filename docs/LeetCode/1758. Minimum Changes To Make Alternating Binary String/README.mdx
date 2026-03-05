@@ -1,0 +1,86 @@
+---
+title: 1758. Minimum Changes To Make Alternating Binary String
+description: You are given a string s consisting only of the characters '0' and '1'. In one operation, you can change any '0' to '1' or vice versa. The string is called alternating if no two adjacent characters are equal. For example, the string "010" is alternating, while the string "0100" is not. Return the minimum number of operations needed to make s alternating.
+keywords:
+  [
+    LeetCode,
+    1.    Minimum Changes To Make Alternating Binary String,
+    Easy,
+    Mid Level,
+    String,
+  ]
+tags: [LeetCode, Easy, Mid Level, String]
+---
+
+# [{frontMatter.title}](https://leetcode.com/problems/minimum-changes-to-make-alternating-binary-string/)
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Solution from "!!raw-loader!./solution.js";
+import Description from "./_Description.md";
+import Examples from "./_Examples.md";
+
+<DifficultyBadge difficulty="Easy" />
+
+<Tabs>
+  <TabItem value="description" label="題目描述" default>
+    <details open>
+      <summary>Description</summary>
+        <Description />
+        <Examples />
+    </details> 
+  </TabItem>
+
+  <TabItem value="solution" label="解答">
+   ## Solution
+    <CodeBlock language="js">{Solution}</CodeBlock>
+  </TabItem>
+</Tabs>
+
+## 解題思路
+
+根據 Hint 1 跟 Hint 2 的提示  
+It will either start with a '0' and be like '010101010..' or with a '1' and be like '10101010..'  
+完美情況要不就 0101... 或 1010...，`0` 開頭或 `1` 開頭
+
+所以解題思路就是判斷原字串 `s` 變為 `0` 開頭的那串還是 `1` 開頭那串哪個比較省事。
+
+所以一開始先宣告兩個變數紀錄兩種分別的結果
+
+```js
+let startWith0 = 0; // 要變為 0101 這樣需要改幾次
+let startWith1 = 0; // 要變為 1010 這樣需要改幾次
+```
+
+接著遍歷字串，當該格如果不符合 0101 的話 startWith0 就++  
+反之亦然
+
+```js
+for (let i = 0; i < s.length; i++) {
+  const thisIndexIsEven = i % 2 === 0; // 判斷是否為第偶數個
+
+  if (s[i] === (thisIndexIsEven ? "1" : "0")) {
+    // 如果這格是第偶數個，代表該格應該要是 1 (因為開頭是 0 所以偶數格要是 1 才會是 0101 這樣)
+    // 如果不是的話 startWith0 就要++
+    startWith0++;
+  } else {
+    startWith1++;
+  }
+}
+```
+
+最後比較兩者的較小那個就是答案了!
+
+```js
+return Math.min(startWith0, startWith1);
+```
+
+## 心得
+
+有夠拗口ㄉ，好恨二進位  
+我恨數數兒.jpg
+
+然後這題在 leetcode 上面的標籤有 Mid Level 但難度是 Easy  
+leetcode 標的難度都是個啥
