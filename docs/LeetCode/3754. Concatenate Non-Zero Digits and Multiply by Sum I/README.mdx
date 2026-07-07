@@ -1,0 +1,60 @@
+---
+title: 3754. Concatenate Non-Zero Digits and Multiply by Sum I
+description: You are given an integer n. Form a new integer x by concatenating all the non-zero digits of n in their original order. If there are no non-zero digits, x = 0. Let sum be the sum of digits in x. Return an integer representing the value of x * sum.
+keywords:
+  [
+    LeetCode,
+    3754. Concatenate Non-Zero Digits and Multiply by Sum I,
+    Easy,
+    Mid Level,
+    Math,
+  ]
+tags: [LeetCode, Easy, Mid Level, Math]
+---
+
+# [{frontMatter.title}](https://leetcode.com/problems/concatenate-non-zero-digits-and-multiply-by-sum-i)
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Solution from "!!raw-loader!./solution.js";
+import Description from "./_Description.md";
+import Examples from "./_Examples.md";
+
+<DifficultyBadge difficulty="Easy" />
+
+<Tabs>
+  <TabItem value="description" label="題目描述" default>
+    <details open>
+      <summary>Description</summary>
+        <Description />
+        <Examples />
+    </details> 
+  </TabItem>
+
+  <TabItem value="solution" label="解答">
+   ## Solution
+    <CodeBlock language="js">{Solution}</CodeBlock>
+  </TabItem>
+</Tabs>
+
+### 解題思路
+
+先按照題目描述暴力解，直接把題目描述轉成程式碼。
+
+```js
+var sumAndMultiply = function (n) {
+  const arrN = Array.from(String(n), Number); // 把傳入的數字先轉成陣列
+  const noZeros = arrN.filter((num) => num !== 0); // 把陣列中的 0 去掉
+  const noZerosString = noZeros.join(""); // 把去掉 0 後的陣列轉成字串
+
+  let sumOfNoZeros = noZeros.reduce((acc, curr) => acc + curr, 0); // 把去掉 0 後的陣列加總
+
+  return noZerosString * sumOfNoZeros; // 最後把去掉 0 後的字串與加總的數字相乘便是答案
+};
+```
+
+### 心得
+
+Submit 後發現效率滿差的，之後要嘗試用非暴力解
