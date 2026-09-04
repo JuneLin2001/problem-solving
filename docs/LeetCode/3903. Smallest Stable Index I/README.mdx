@@ -1,0 +1,32 @@
+---
+title: 3903. Smallest Stable Index I
+description: You are given an integer array nums of length n and an integer k. For each index i, define its instability score as max(nums[0..i]) - min(nums[i..n - 1]).In other words max(nums[0..i]) is the largest value among the elements from index 0 to index i.min(nums[i..n - 1]) is the smallest value among the elements from index i to index n - 1.An index i is called stable if its instability score is less than or equal to k.Return the smallest stable index. If no such index exists, return -1.
+keywords:
+  [LeetCode, 3903. Smallest Stable Index I, Easy, Mid Level, Array, Prefix Sum]
+tags: [LeetCode, Easy, Mid Level, Array, Prefix Sum]
+---
+
+# [{frontMatter.title}](https://leetcode.com/problems/smallest-stable-index-i)
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Solution from "!!raw-loader!./solution.js";
+
+<DifficultyBadge difficulty="Easy" />
+
+<Tabs>
+  <TabItem value="solution" label="解答">
+    ## Solution
+    <CodeBlock language="js">{Solution}</CodeBlock>
+  </TabItem>
+</Tabs>
+
+### 解題思路
+
+提示寫 `Simulate as described`，所以就直接按照描述暴力解。
+
+### 心得
+
+目前時間複雜度是 O(n²)，滿差的，有很大的調整空間。
