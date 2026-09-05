@@ -1,0 +1,42 @@
+---
+title: 2619. Array Prototype Last
+description: Write code that enhances all arrays such that you can call the array.last() method on any array and it will return the last element. If there are no elements in the array, it should return -1.You may assume the array is the output of JSON.parse.
+keywords: [LeetCode, 2619. Array Prototype Last, Easy]
+tags: [LeetCode, Easy]
+---
+
+# [{frontMatter.title}](https://leetcode.com/problems/array-prototype-last)
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Description from "./_Description.md";
+import Solution from "!!raw-loader!./solution.js";
+
+<DifficultyBadge difficulty="Easy" />
+
+<Tabs>
+  <TabItem value="description" label="題目描述" default>
+    <details open>
+      <summary>Description</summary>
+        <Description />
+    </details> 
+  </TabItem>
+
+  <TabItem value="solution" label="解答">
+   ## Solution
+    <CodeBlock language="js">{Solution}</CodeBlock>
+  </TabItem>
+</Tabs>
+
+### 解題思路
+
+題目要求是替 Array 新增一個 `.last()` 方法，來取得陣列的最後一個元素。  
+由於是在 Array.prototype 上新增，故在解題時可以使用 `this` 來取得當前陣列本身。  
+直接使用 `this[this.length - 1]` 來取得最後一個元素即可。
+而當陣列長度為 0 時，依照題目要求直接回傳 `-1`。
+
+### 心得
+
+直接操作 prototype 還滿少見的，剛好可以練習這種做法。
