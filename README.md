@@ -18,6 +18,17 @@
 
 [![Codewars](https://github.r2v.ch/codewars?user=JuneLin2001&theme=gradient&top_languages=true)](https://www.codewars.com/users/JuneLin2001)
 
+## Scripts
+
+目前使用 [Clip LeetCode](https://chromewebstore.google.com/detail/clip-leetcode/cnghimckckgcmhbdokjielmhkmnagdcp) 這個 chrome 擴充功能，抓取題目並轉換成 markdown 格式。  
+新增一題時，到該題資料夾創建一個 `original.md` 檔案，並把題目貼至其中，再執行：
+
+```sh
+npm run convert -- <題號或資料夾路徑>
+```
+
+例如 `npm run convert -- 9999` 或 `npm run convert -- "docs/LeetCode/9999. Some Problem"`，會自動把 `original.md` 轉成排版好的 `_Description.md`（去除多餘的 HTML 標籤、轉成 Markdown 語法等）。
+
 ## Roadmap
 
 - [x] 加搜尋功能

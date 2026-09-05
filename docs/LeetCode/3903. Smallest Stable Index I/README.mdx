@@ -12,13 +12,21 @@ import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import CodeBlock from "@theme/CodeBlock";
 import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Description from "./_Description.md";
 import Solution from "!!raw-loader!./solution.js";
 
 <DifficultyBadge difficulty="Easy" />
 
 <Tabs>
+  <TabItem value="description" label="題目描述" default>
+    <details open>
+      <summary>Description</summary>
+        <Description />
+    </details> 
+  </TabItem>
+
   <TabItem value="solution" label="解答">
-    ## Solution
+   ## Solution
     <CodeBlock language="js">{Solution}</CodeBlock>
   </TabItem>
 </Tabs>
