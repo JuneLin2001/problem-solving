@@ -1,0 +1,100 @@
+---
+title: 3904. Smallest Stable Index II
+description: You are given an integer array nums of length n and an integer k.For each index i, define its instability score as max(nums[0..i]) - min(nums[i..n - 1]).In other words:max(nums[0..i]) is the largest value among the elements from index 0 to index i.min(nums[i..n - 1]) is the smallest value among the elements from index i to index n - 1.An index i is called stable if its instability score is less than or equal to k.Return the smallest stable index. If no such index exists, return -1.
+keywords:
+  [
+    LeetCode,
+    3904. Smallest Stable Index II,
+    Medium,
+    Mid Level,
+    Array,
+    Prefix Sum,
+  ]
+tags: [LeetCode, Medium, Mid Level, Array, Prefix Sum]
+---
+
+# [{frontMatter.title}](https://leetcode.com/problems/smallest-stable-index-i)
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Description from "./_Description.md";
+import Solution from "!!raw-loader!./solution.js";
+import OriginalSolution from "!!raw-loader!../3903. Smallest Stable Index I/solution.js";
+
+<DifficultyBadge difficulty="Medium" />
+
+<Tabs>
+  <TabItem value="description" label="題目描述" default>
+    <details open>
+      <summary>Description</summary>
+        <Description />
+    </details> 
+  </TabItem>
+
+  <TabItem value="solution" label="解答">
+   ## Solution
+    <CodeBlock language="js">{Solution}</CodeBlock>
+  </TabItem>
+</Tabs>
+
+### 解題思路
+
+呈上題 [3903. Smallest Stable Index I](../3903.%20Smallest%20Stable%20Index%20I/README.mdx) 的解題思路，若直接用同做法會因為測資較大而超時。
+
+上題的解法是每次都重新計算 `maximum` 和 `minimum`，故要提升效率可以從此著手改善。
+
+<details open>
+  <summary>原本做法</summary>
+  <CodeBlock language="js">{OriginalSolution}</CodeBlock>
+</details>
+
+首先要改的是 `maximum` 的部分。  
+目前是每次都重新計算，但可以用一個變數儲存目前最大值，當遇到更大的數時就更新這個值。
+
+```js
+let maximum = 0;
+
+for (let i = 0; i < n; i++) {
+  maximum = Math.max(maximum, nums[i]);
+}
+```
+
+至於 `minimum`，可以先建立一個陣列 `suffixMin`，用來儲存「從目前 index 到最右邊」的最小值。  
+因為 `suffixMin[i]` 的計算方式是：
+
+```js
+suffixMin[i] = Math.min(nums[i], suffixMin[i + 1]);
+```
+
+也就是說，`suffixMin[i]` 的計算需要先知道右邊的 `suffixMin[i + 1]`。  
+因此我們必須先從最右邊開始計算，再一路往左建立 `suffixMin`。
+
+接著才能依序計算 `suffixMin[n - 2]`、`suffixMin[n - 3]`……直到 `suffixMin[0]`。  
+如果從左到右計算，就會發現當我們要計算 `suffixMin[i]` 時，右邊的 `suffixMin[i + 1]` 還沒有被計算出來，因此無法使用這個公式。
+
+```js
+const n = nums.length;
+
+const suffixMin = new Array(n); // 直接建立一個長度為 n 的陣列
+suffixMin[n - 1] = nums[n - 1]; // 最右邊的 suffixMin[n - 1] 沒有右邊的元素，所以它的最小值就是自己
+
+// 從右往左建立 suffixMin
+for (let i = n - 2; i >= 0; i--) {
+  suffixMin[i] = Math.min(nums[i], suffixMin[i + 1]); // 當前數字和右邊的最小值比較，取較小的
+}
+```
+
+所以整體的邏輯就是先算好所有的 `minimum`，再從左往右算 `maximum`。
+最後才能計算：
+
+```js
+maximum - suffixMin[i];
+```
+
+也就是題目要求的：左邊最大值 - 右邊最小值
+
+### 心得
+
+豪難，看了好久才稍微理解：（
