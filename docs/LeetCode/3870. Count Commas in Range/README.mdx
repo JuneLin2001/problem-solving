@@ -1,0 +1,48 @@
+---
+title: 3870. Count Commas in Range
+description: You are given an integer n.Return the total number of commas used when writing all integers from [1, n] (inclusive) in standard number formatting.In standard formatting:A comma is inserted after every three digits from the right.Numbers with fewer than 4 digits contain no commas.
+keywords: [LeetCode, 3870. Count Commas in Range, Easy, Mid Level, Math]
+tags: [LeetCode, Easy, Mid Level, Math]
+---
+
+# [{frontMatter.title}](https://leetcode.com/problems/count-commas-in-range)
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Description from "./_Description.md";
+import Solution from "!!raw-loader!./solution.js";
+
+<DifficultyBadge difficulty="Easy" />
+
+<Tabs>
+  <TabItem value="description" label="題目描述" default>
+    <details open>
+      <summary>Description</summary>
+        <Description />
+    </details> 
+  </TabItem>
+
+  <TabItem value="solution" label="解答">
+   ## Solution
+    <CodeBlock language="js">{Solution}</CodeBlock>
+  </TabItem>
+</Tabs>
+
+### 解題思路
+
+要算出總共有幾個逗號。  
+然後測資很少，只有 1 `<=` n `<=` $10^5$，所以要考慮的只有三種狀況。
+
+```js
+var countCommas = function (n) {
+  if (n === 1000000) return 999002; // 最大值 1000000 的狀況，會變成 1,000,000，有兩個逗號，可以先用 n - 1000 + 1 算出除他之外其他值總和，最後再加二，會變成 999002。
+  if (n < 1000) return 0; // 小於 1000 的狀況，沒有逗號
+  return n - 1000 + 1; // 介於 1000 到最大值的狀況，可以用 n - 1000 + 1 這個公式算出。
+};
+```
+
+### 心得
+
+甘單，不到五分鐘搞定😎
