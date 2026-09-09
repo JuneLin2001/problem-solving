@@ -1,0 +1,55 @@
+---
+title: 3871. Count Commas in Range II
+description: You are given an integer n. Return the total number of commas used when writing all integers from [1, n] (inclusive) in standard number formatting.In standard formatting:A comma is inserted after every three digits from the right. Numbers with fewer than 4 digits contain no commas.
+keywords: [LeetCode, 3871. Count Commas in Range II, Medium, Senior, Math]
+tags: [LeetCode, Medium, Senior, Math]
+---
+
+# [{frontMatter.title}](https://leetcode.com/problems/count-commas-in-range-ii)
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import DifficultyBadge from "@site/src/components/Badges/DifficultyBadge";
+import Description from "./_Description.md";
+import Solution from "!!raw-loader!./solution.js";
+
+<DifficultyBadge difficulty="Medium" />
+
+<Tabs>
+  <TabItem value="description" label="題目描述" default>
+    <details open>
+      <summary>Description</summary>
+        <Description />
+    </details> 
+  </TabItem>
+
+  <TabItem value="solution" label="解答">
+   ## Solution
+    <CodeBlock language="js">{Solution}</CodeBlock>
+  </TabItem>
+</Tabs>
+
+### 解題思路
+
+要算出總共有幾個逗號。  
+但測資比較大，所以不能和上一題目一樣暴力解。  
+這次改用計算ㄉ。
+
+```js
+var countCommas = function (n) {
+  let base = 1000; // 因為每多三個 0 才會多一個逗號，故 base 設定為 1000
+  let result = 0; // 總共有幾個逗號，最少是 0 個
+
+  while (n >= base) {
+    result += n - base + 1; // 算出這輪共有幾個逗號
+    base *= 1000; // 進到下一輪，base 需要乘上 1000
+  }
+
+  return result;
+};
+```
+
+### 心得
+
+比想像中還容易理解一點。
